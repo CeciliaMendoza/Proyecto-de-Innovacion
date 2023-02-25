@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your views here.
 
 def opciones_login(request):
@@ -20,10 +22,11 @@ class VRegistro(View):
         if form.is_valid():
             usuario = form.save()
             login(request, usuario)
-            return redirect("home")
+            return redirect("opciones_login")
         else:
-            for msg in form.error_messages:
-                messages.error(request, form.error_messages[msg])
+            for field, items in form.errors.items():
+                for item in items:
+                    messages.error(request, '{}: {}'.format(field, item))
             return render(request, "Autentificacion/register.html", {"form":form})
 
 def login_user(request):

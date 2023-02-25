@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'publicaciones/vendor/bootstrap/css/bootstrapp.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link href="{% static 'publicaciones/assets/css/fontawesome.css' %}" rel="stylesheet">
+    <link href="{% static 'publicaciones/assets/css/templatemo-cyborg-gaming.css' %}" rel="stylesheet">
+
+
+  </head>
+
+<body>
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="#" class="logo">
+                        SeccionCU
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Categorias</a></li>
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="{% url 'logout'%}" >Cerrar Sesion</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  {% block content%}
+
+  {% endblock%}
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+
+  <script src="{% static 'publicaciones/vendor/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'publicaciones/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+
+  <script src="{% static 'publicaciones/assets/js/isotope.min.js'%}"></script>
+  <script src="{% static 'publicaciones/assets/js/tabs.js'%}"></script>
+  <script src="{% static 'publicaciones/assets/js/custom.js'%}"></script>
+
+
+  </body>
+
+</html>
