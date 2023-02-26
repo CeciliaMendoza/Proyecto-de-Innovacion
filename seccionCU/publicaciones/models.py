@@ -19,7 +19,7 @@ class Publicaciones(models.Model):
     imagen =  models.ImageField(upload_to='publicaciones', null=True, blank=True)
     estado = models.BooleanField(default=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    precio = models.DecimalField(max_digits=2, decimal_places=2)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
@@ -34,6 +34,12 @@ class Publicaciones(models.Model):
 class Solicitudes(models.Model):
     publicacion = models.ForeignKey(Publicaciones, on_delete=models.CASCADE)
     solicitante = models.ForeignKey(User, on_delete=models.CASCADE)
-    valoracion = models.IntegerField()
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now_add=True)
+
+class Puntuacion(models.Model):
+    publicacion = models.ForeignKey(Publicaciones, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    valoracion = models.IntegerField(blank=True, null=True)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
