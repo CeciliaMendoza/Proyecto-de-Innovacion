@@ -9,55 +9,39 @@
     }
 </style>
 <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="page-content">
-
-          <!-- ***** Banner Start ***** -->
-          <div class="main-banner">
-            <div class="row">
-              <div class="col-lg-7">
-                <div class="header-text">
-                  <h6>Bienvenido a SeccionCU</h6>
-                  <h4><em>Browse</em> Our Popular Games Here</h4>
-                  <div class="main-button">
-                    <a href="#">Browse Now</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ***** Banner End ***** -->
-
-          <!-- ***** Most Popular Start ***** -->
-          <div class="most-popular">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="heading-section">
-                  <h4><em>Most Popular</em> Right Now</h4>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-sm-6">
-                    <div class="item">
-                      <img src="{%static 'publicaciones/assets/images/popular-01.jpg'%}" 
-                      alt="">
-                      <h4>Fortnite<br><span>Sandbox</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ***** Most Popular End ***** -->
-
-        </div>
-      </div>
+  <section>
+    <div style="color: white;">
+        Categorias
+        {%for cat in categorias%}
+            <a href="{%url 'categoria' cat.id%}">{{cat.nombre}}</a>
+        {%endfor%}
     </div>
+</section>
+
+{%for publicacion in publicaciones%}
+
+    
+<div class="col-md-4">
+  <div class="card" style="margin: 1em 1em;" >
+      <img src="{{publicacion.imagen.url}}" class="card-img-top">
+      <div class="card-body">
+          <h5 class="card-title">Titulo: {{publicacion.titulo}}</h5>
+          <p class="card-subtitle mb-2 text-muted">Descripcion: {{publicacion.descripcion }}</p>
+
+          <p class="card-subtitle mb-2 text-muted">Precio: ${{publicacion.precio}}</p>
+      </div>
+      <div class="card-footer">
+        <p class="card-subtitle mb-2 text-muted">Autor: {{publicacion.autor}}</p>
+        <p class="card-subtitle mb-2 text-muted">Categoria: {{publicacion.categoria}}</p>
+
+      </div>
   </div>
-  
+</div>
+
+
+{%endfor%}
+
+
+{% include "publicaciones/paginacion_publicaciones.html" with page_obj=publicaciones  %}
+
 {%endblock%}
