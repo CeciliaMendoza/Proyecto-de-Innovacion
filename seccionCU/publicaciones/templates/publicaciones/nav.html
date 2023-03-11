@@ -10,14 +10,17 @@
     <title>Seccion CU</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'publicaciones/vendor/bootstrap/css/bootstrapp.min.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script  rel="preload" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script  rel="preload" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script  rel="preload" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    
     <!-- Additional CSS Files -->
-    <link href="{% static 'publicaciones/assets/css/fontawesome.css' %}" rel="stylesheet">
     <link href="{% static 'publicaciones/assets/css/templatemo-cyborg-gaming.css' %}" rel="stylesheet">
-
     <link href="{% static 'publicaciones/assets/css/header.css' %}" rel="stylesheet">
-
+    <link href="{% static 'publicaciones/assets/css/publicaciones.css' %}" rel="stylesheet">
+    <link href="{% static 'publicaciones/assets/css/queries.css' %}" rel="stylesheet">
 
   </head>
 
@@ -36,40 +39,53 @@
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="#" class="logo">
-                        Seccion<span>CU</span>
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Search End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">Categorias</a></li>
-                        <li><a href="#">Perfil</a></li>
-                        <li><a href="{% url 'logout'%}" >Cerrar Sesion</a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
+  
+  <nav class="navbar navbar-expand-sm navbar-light bg-light  row row-cols-auto">
+    <button class="navbar-toggler offset-1" type="button" data-toggle="collapse" data-target="#opciones">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- logo -->
+    <a class="navbar-brand" href="#">
+      <a href="#" class="logo">Seccion<span>CU</span></a>
+    </a>
+
+    <!-- enlaces -->
+    <div class="collapse navbar-collapse offset-1" id="opciones">  
+      
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Opción 1</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Opción 2</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Opción 3</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Opción 4</a>
+        </li>            
+      </ul>
+
+      <div class="search-container">
+        <form action="/search" method="get">
+          <input class="search" id="searchleft" type="search" name="q" placeholder="Search">
+          <label class="button searchbutton" for="searchleft"><span class="mglass">&#9906;</span></label>
+        </form>
+      </div>
+
     </div>
-  </header>
+
+    
+    
+
+    </div>
+  </nav>
+ 
   {% block content%}
 
   {% endblock%}
@@ -83,6 +99,7 @@
   <script src="{% static 'publicaciones/assets/js/isotope.min.js'%}"></script>
   <script src="{% static 'publicaciones/assets/js/tabs.js'%}"></script>
   <script src="{% static 'publicaciones/assets/js/custom.js'%}"></script>
+  <script src="{% static 'publicaciones/assets/js/barra_busqueda.js'%}"></script>
 
 
   </body>

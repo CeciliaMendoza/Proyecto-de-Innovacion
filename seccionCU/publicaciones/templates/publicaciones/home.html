@@ -3,43 +3,56 @@
 {% load static %}
 
 {%block content%}
+
+
 <style>
     img{
         width: 20%;
     }
 </style>
-<div class="container">
-  <section>
-    <div style="color: white;">
-        Categorias
-        {%for cat in categorias%}
-            <a href="{%url 'categoria' cat.id%}">{{cat.nombre}}</a>
+
+
+<div class="container publicaciones-2">
+    <section>
+        <div class="link-p">
+            Categorias
+            {%for cat in categorias%}
+                <a class="link-p" href="{%url 'categoria' cat.id%}">{{cat.nombre}}</a>
+            {%endfor%}
+        </div>
+    </section>
+
+    <div>
+        
+        {%for publicacion in publicaciones%}
+        
+        <div class="card mb-4">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{publicacion.imagen.url}}" class="card-img-top">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
+                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+        
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
+
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+
         {%endfor%}
+
     </div>
-</section>
-
-{%for publicacion in publicaciones%}
-
     
-<div class="col-md-4">
-  <div class="card" style="margin: 1em 1em;" >
-      <img src="{{publicacion.imagen.url}}" class="card-img-top">
-      <div class="card-body">
-          <h5 class="card-title">Titulo: {{publicacion.titulo}}</h5>
-          <p class="card-subtitle mb-2 text-muted">Descripcion: {{publicacion.descripcion }}</p>
-
-          <p class="card-subtitle mb-2 text-muted">Precio: ${{publicacion.precio}}</p>
-      </div>
-      <div class="card-footer">
-        <p class="card-subtitle mb-2 text-muted">Autor: {{publicacion.autor}}</p>
-        <p class="card-subtitle mb-2 text-muted">Categoria: {{publicacion.categoria}}</p>
-
-      </div>
-  </div>
 </div>
 
 
-{%endfor%}
+
 
 
 {% include "publicaciones/paginacion_publicaciones.html" with page_obj=publicaciones  %}
