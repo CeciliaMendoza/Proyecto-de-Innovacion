@@ -1,12 +1,43 @@
 .publicaciones-2{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
 
-    margin-top: 3rem;
+    margin: 3rem 2rem 0 2rem;
 }
 
 .card-title{
     color: rgb(0, 0, 0);
+}
+
+.card{
+    background-color: #FFE3E1;
+    
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.page-link{
+    color: #FF9494;
+    
+}
+
+.sombreado{
+    box-shadow: 9px 10px 12px 3px rgba(0,0,0,0.13);
+    -webkit-box-shadow: 9px 10px 12px 3px rgba(0,0,0,0.13);
+    -moz-box-shadow: 9px 10px 12px 3px rgba(0,0,0,0.13);
+}
+
+.page-item.active .page-link{
+    background-color: #FF9494;
+    border-color: #FF9494;
+}
+
+.paginacion{
+    margin: 0 .5rem;
+    border-radius: 12px;
 }
 
 .link-p{

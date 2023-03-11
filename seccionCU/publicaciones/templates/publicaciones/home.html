@@ -12,21 +12,21 @@
 </style>
 
 
-<div class="container publicaciones-2">
-    <section>
+<!--<div class="container publicaciones-2">-->
+    <!--<section>
         <div class="link-p">
             Categorias
             {%for cat in categorias%}
                 <a class="link-p" href="{%url 'categoria' cat.id%}">{{cat.nombre}}</a>
             {%endfor%}
         </div>
-    </section>
+    </section>-->
 
-    <div>
+    <div class="publicaciones-2">
         
         {%for publicacion in publicaciones%}
         
-        <div class="card mb-4">
+        <div class="card mb-4 sombreado">
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="{{publicacion.imagen.url}}" class="card-img-top">
@@ -49,7 +49,7 @@
 
     </div>
     
-</div>
+<!--</div>-->
 
 
 
