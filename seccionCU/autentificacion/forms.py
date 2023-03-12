@@ -2,17 +2,25 @@ from django import forms
 from autentificacion.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm
+from django.utils.translation import gettext_lazy as _
 
 class CustomUserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
 
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username','first_name','last_name', 'career', 'email')
+        labels = {
+            'username': _('Nombre de usuario'),
+            'first_name': _('Nombre'),
+            'last_name': _('Apellido'),
+            'career': _('Carrera'),
+
+        }
 
     def email_clean(self):  
         email = self.cleaned_data['email'].lower()  

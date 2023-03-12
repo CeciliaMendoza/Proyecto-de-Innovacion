@@ -1,0 +1,75 @@
+{% extends 'publicaciones/nav.html'%}
+
+{% load static %}
+
+{%block content%}
+<style>
+    img{
+        width: 20%;
+    }
+</style>
+
+<h2>
+    nombre de usuario
+    {{ usuario.username }}
+</h2>
+<h2>
+    nombre 
+    {{ usuario.first_name }}
+</h2>
+<h2>
+    apellido
+    {{ usuario.last_name }}
+</h2>
+<h2>
+    carrera
+    {{ usuario.career }}
+</h2>
+<h2>
+    telefono
+    {{ usuario.phone }}
+</h2>
+<p>foto de perfil</p>
+{% if usuario.photo %}
+    <img src="{{usuario.photo.url}}" >
+
+{%endif%}
+<div>
+    <a href="#"> Historia de solicitudes</a>
+    <a href="#"> Crear publicacion</a>
+    <a href="#"> Configuracion</a>  
+</div>
+
+<h1>
+    Publicaciones de este usuario
+</h1>
+
+<div class="publicaciones-2">
+        
+    {%for publicacion in publicaciones%}
+    
+    <div class="card mb-4 sombreado">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{publicacion.imagen.url}}" class="card-img-top">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
+                <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+    
+                <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
+
+                <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
+                <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    {%endfor%}
+
+</div>
+
+
+{%endblock%}

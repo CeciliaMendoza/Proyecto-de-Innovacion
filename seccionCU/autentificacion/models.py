@@ -9,11 +9,13 @@ class User(AbstractUser):
         max_length=255,
         unique=True,
     )
-    birthdate = models.DateField(null=True)
-    phone = models.CharField(max_length=10, null=True)
-    address = models.CharField(max_length=200, null=True)
-    photo = models.ImageField(null=True)
-    career = models.CharField(max_length=30,null=True)
+    username = models.CharField(max_length=100, unique=False)
+
+    birthdate = models.DateField(null=True, blank=True)
+    phone = models.CharField(max_length=10, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
+    photo = models.ImageField(upload_to='autentificacion', null=True, blank=True, default='autentificacion/gato.JPG')
+    career = models.CharField(max_length=30,null=True, blank=True)
     created = models.DateField(auto_now_add=True)
     
     USERNAME_FIELD = 'email'

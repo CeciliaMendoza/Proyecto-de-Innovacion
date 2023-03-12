@@ -6,6 +6,7 @@ from django.contrib import messages
 from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm
 
 from django.contrib.auth import get_user_model
+from publicaciones.models import Categoria, Publicaciones
 User = get_user_model()
 # Create your views here.
 
@@ -50,3 +51,11 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect("opciones_login")
+
+
+def perfil(request):
+    categorias = Categoria.objects.all()
+
+    user = request.user
+    publicaciones_user = Publicaciones.objects.filter(autor = user)
+    return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})

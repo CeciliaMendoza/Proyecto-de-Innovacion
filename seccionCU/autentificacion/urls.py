@@ -7,5 +7,6 @@ urlpatterns = [
     path("login/", views.login_user, name="login"),
     path("logout/", views.logout_user, name="logout"),
     path("register/", VRegistro.as_view(), name="register"),
+    path("perfil/", views.perfil, name="perfil"),
 
 ]
