@@ -3,6 +3,8 @@ from autentificacion.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
+from django.forms import ModelForm
+from django.forms.widgets import ClearableFileInput
 
 class CustomUserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -51,3 +53,23 @@ class CustomAuthenticationForm(AuthenticationForm):
 
     username = forms.EmailField(label='Email')
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)  
+
+
+class Update_user(ModelForm):
+    photo = forms.ImageField(widget=forms.FileInput, label="Foto", required=False)
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','photo']
+        labels = {
+            'username': _('Nombre de usuario'),
+            'first_name': _('Nombre'),
+            'last_name': _('Apellido'),
+            'career': _('Carrera'),
+            'birthdate': _('Fecha de nacimiento'),
+            'phone': _('Telefono'),
+            'address': _('Direccion'),
+        }
+        widgets = {
+            'birthdate': forms.DateInput(format=('%Y-%m-%d'),attrs={'type': 'date'}),
+        }

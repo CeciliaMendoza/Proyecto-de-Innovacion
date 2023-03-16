@@ -9,6 +9,14 @@
     }
 </style>
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="contenido_perfil">
 
     <div class="cont-perfil-img">
@@ -21,7 +29,7 @@
         <div class="apartados-perfil">
             <a href="#"> Historia de solicitudes</a>
             <a href="#"> Crear publicacion</a>
-            <a href="#"> Configuracion</a>  
+            <a href="{%url 'configuracion'%}"> Configuracion</a>  
         </div>
     
     </div>

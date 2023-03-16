@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-
+import os
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm
+from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm, Update_user
+
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
 
 from django.contrib.auth import get_user_model
 from publicaciones.models import Categoria, Publicaciones
@@ -55,7 +59,42 @@ def logout_user(request):
 
 def perfil(request):
     categorias = Categoria.objects.all()
-
     user = request.user
+    print(request.user.id)
     publicaciones_user = Publicaciones.objects.filter(autor = user)
     return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})
+
+def configuracion(request):
+    categorias = Categoria.objects.all()
+
+    usuario = User.objects.get(id=request.user.id)
+
+    if request.method == 'POST':
+        #imagen antigua
+        old_image = ""
+        #revisa si tiene foto
+        if request.user.photo:
+            #path de la foto
+            old_image = request.user.photo.path
+        #formulario
+        form = Update_user(request.POST,request.FILES, instance=usuario)
+        #si el formato es valido
+        if form.is_valid() :
+            if(form.cleaned_data.get("photo")  != request.user.photo.name):
+                #si esta, eliminar la foto vieja
+                if os.path.exists(old_image):
+                    #remove la foto vieja
+                    os.remove(old_image)
+            form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect("perfil")
+    else:
+        form = Update_user(instance=usuario)
+
+    return render(request, "autentificacion/configuracion.html", {"categorias":categorias, "form": form})
+
+
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'autentificacion/change_password.html'
+    success_message = "Successfully Changed Your Password"
+    success_url = reverse_lazy('perfil')
