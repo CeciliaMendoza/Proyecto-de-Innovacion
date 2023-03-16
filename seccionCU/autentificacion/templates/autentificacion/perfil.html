@@ -9,67 +9,85 @@
     }
 </style>
 
-<h2>
-    nombre de usuario
-    {{ usuario.username }}
-</h2>
-<h2>
-    nombre 
-    {{ usuario.first_name }}
-</h2>
-<h2>
-    apellido
-    {{ usuario.last_name }}
-</h2>
-<h2>
-    carrera
-    {{ usuario.career }}
-</h2>
-<h2>
-    telefono
-    {{ usuario.phone }}
-</h2>
-<p>foto de perfil</p>
-{% if usuario.photo %}
-    <img src="{{usuario.photo.url}}" >
+<div class="contenido_perfil">
 
-{%endif%}
-<div>
-    <a href="#"> Historia de solicitudes</a>
-    <a href="#"> Crear publicacion</a>
-    <a href="#"> Configuracion</a>  
-</div>
+    <div class="cont-perfil-img">
 
-<h1>
-    Publicaciones de este usuario
-</h1>
-
-<div class="publicaciones-2">
-        
-    {%for publicacion in publicaciones%}
+        {% if usuario.photo %}
+            <img class="img-perfil" src="{{usuario.photo.url}}" >
     
-    <div class="card mb-4 sombreado">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{{publicacion.imagen.url}}" class="card-img-top">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
-                <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+        {%endif%}
     
-                <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
-
-                <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
-                <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
-            </div>
-          </div>
+        <div class="apartados-perfil">
+            <a href="#"> Historia de solicitudes</a>
+            <a href="#"> Crear publicacion</a>
+            <a href="#"> Configuracion</a>  
         </div>
+    
+    </div>
+    
+    <div class="cont-datosPerfil">
+    
+        <h2>
+            <span>Nombre de usuario: </span>
+            {{ usuario.username }}
+        </h2>
+        <h2>
+            <span>Nombre: </span>
+            {{ usuario.first_name }}
+        </h2>
+        <h2>
+            <span>Apellido: </span>
+            {{ usuario.last_name }}
+        </h2>
+        <h2>
+            <span>Carrera: </span>
+            {{ usuario.career }}
+        </h2>
+        <h2>
+            <span>Teléfono: </span>
+            {{ usuario.phone }}
+        </h2>
+    
     </div>
 
-    {%endfor%}
+</div>
+
+<div class="publicaciones-perfil">
+    <h1>
+        Publicaciones de este usuario
+    </h1>
+    
+    <div class="publicaciones-2">
+            
+        {%for publicacion in publicaciones%}
+        
+        <div class="card mb-4 sombreado">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{publicacion.imagen.url}}" class="card-img-top">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
+                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+        
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
+    
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    
+        {%endfor%}
+    
+    </div>
 
 </div>
+
+
 
 
 {%endblock%}

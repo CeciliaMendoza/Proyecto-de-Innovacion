@@ -1,0 +1,47 @@
+.contenido_perfil{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    margin: 2rem;
+}
+
+.img-perfil{
+    height: 25rem;
+    width: 25rem;
+}
+
+.apartados-perfil{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 2rem;
+}
+
+.apartados-perfil a{
+    color: #FF9494;
+
+    font-size: 2rem;
+}
+
+.apartados-perfil a:hover{
+    color: #FFD1D1;
+    text-decoration: none;
+}
+
+.cont-datosPerfil h2{
+    color: #FF9494;
+
+    border-bottom: 3.5px solid #FF9494;
+
+    margin-bottom: 2.8rem;
+}
+
+.cont-datosPerfil span{
+    font-weight: bold;
+}
+
+.publicaciones-perfil h1{
+    color: #FF9494;
+
+    text-align: center;
+}
