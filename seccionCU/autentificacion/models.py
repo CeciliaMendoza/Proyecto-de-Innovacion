@@ -14,7 +14,7 @@ class User(AbstractUser):
     birthdate = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=10, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
-    photo = models.ImageField(upload_to='autentificacion', null=True, blank=True, default='autentificacion/gato.JPG')
+    photo = models.ImageField(upload_to='autentificacion', null=True, blank=True, default='autentificacion/gato.jpg')
     career = models.CharField(max_length=30,null=True, blank=True)
     created = models.DateField(auto_now_add=True)
     

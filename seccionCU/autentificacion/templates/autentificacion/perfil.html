@@ -28,7 +28,7 @@
     
         <div class="apartados-perfil">
             <a href="#"> Historia de solicitudes</a>
-            <a href="#"> Crear publicacion</a>
+            <a href="{%url 'create'%}"> Crear publicacion</a>
             <a href="{%url 'configuracion'%}"> Configuracion</a>  
         </div>
     
@@ -72,9 +72,12 @@
         
         <div class="card mb-4 sombreado">
             <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{publicacion.imagen.url}}" class="card-img-top">
-              </div>
+              {% if publicacion.imagen %}
+                <div class="col-md-4">
+                    <img src="{{publicacion.imagen.url}}" class="card-img-top">
+                </div>
+              {% endif %}
+
               <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>

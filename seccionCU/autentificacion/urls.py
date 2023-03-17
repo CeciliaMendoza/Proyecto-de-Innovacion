@@ -1,6 +1,6 @@
 from django.urls import path
 from autentificacion import views
-from autentificacion.views import VRegistro, ChangePasswordView
+from autentificacion.views import VRegistro, ChangePasswordView, crear_publicacion
 
 urlpatterns = [
     path("", views.opciones_login, name="opciones_login"),
@@ -10,5 +10,6 @@ urlpatterns = [
     path("perfil/", views.perfil, name="perfil"),
     path("configuracion/", views.configuracion, name="configuracion"),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
+    path("create/", crear_publicacion.as_view(), name="create"),
 
 ]

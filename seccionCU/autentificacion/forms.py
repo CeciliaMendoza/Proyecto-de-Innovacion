@@ -1,10 +1,10 @@
 from django import forms
 from autentificacion.models import User
+from publicaciones.models import Publicaciones
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
-from django.forms.widgets import ClearableFileInput
 
 class CustomUserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -60,7 +60,7 @@ class Update_user(ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','photo']
+        fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','phone']
         labels = {
             'username': _('Nombre de usuario'),
             'first_name': _('Nombre'),
@@ -73,3 +73,13 @@ class Update_user(ModelForm):
         widgets = {
             'birthdate': forms.DateInput(format=('%Y-%m-%d'),attrs={'type': 'date'}),
         }
+
+
+class Crear_publicacion(ModelForm):
+
+    class Meta:
+        model = Publicaciones
+        fields = ['titulo', 'descripcion', 'precio','estado', 'categoria', 'imagen']
+        exclude = ['autor']
+
+

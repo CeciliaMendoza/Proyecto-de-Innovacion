@@ -3,7 +3,7 @@ from django.views.generic import View
 import os
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm, Update_user
+from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm, Update_user, Crear_publicacion
 
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -79,10 +79,11 @@ def configuracion(request):
         #formulario
         form = Update_user(request.POST,request.FILES, instance=usuario)
         #si el formato es valido
-        if form.is_valid() :
-            if(form.cleaned_data.get("photo")  != request.user.photo.name):
+        if form.is_valid():
+            photo_new = form.cleaned_data.get("photo")      
+            if( (photo_new != request.user.photo.name)):
                 #si esta, eliminar la foto vieja
-                if os.path.exists(old_image):
+                if os.path.exists(old_image) and (request.user.photo.name != "autentificacion/gato.jpg"):
                     #remove la foto vieja
                     os.remove(old_image)
             form.save()
@@ -98,3 +99,24 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'autentificacion/change_password.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('perfil')
+
+class crear_publicacion(View):
+
+    def get(self, request):
+        categorias = Categoria.objects.all()
+        form = Crear_publicacion(request.POST,request.FILES)
+        return render(request, "Autentificacion/crear_publicacion.html", {"categorias":categorias,"form":form})
+        
+    def post(self, request):
+        categorias = Categoria.objects.all()
+        form = Crear_publicacion(request.POST,request.FILES)
+        if form.is_valid():
+            publicacion = form.save(commit=False)
+            publicacion.autor = request.user
+            publicacion.save()
+            return redirect("perfil")
+        else:
+            for field, items in form.errors.items():
+                for item in items:
+                    messages.error(request, '{}: {}'.format(field, item))
+            return render(request, "Autentificacion/crear_publicacion.html", {"categorias":categorias,"form":form})
