@@ -26,20 +26,35 @@
     </ul>
     {% endif %}
     
-    <h1> Informacion general</h1>
+    <h1 class="text-config"> Informacion general</h1>
+
     <div class="form-content">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
-            {{form|crispy}}
-            <p>Foto actual</p>
-            <img src="{{ request.user.photo.url }}" width="300px" height="300px"> 
-            <br>
+            <div class="form-config">
+                <div class="img-config">
+                    <p>Foto actual</p>
+                    <img src="{{ request.user.photo.url }}" width="300px" height="300px"> 
 
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+                    <button type="submit" class="btn btn-dark btn-lg btn-config">Guardar Cambios</button>
+
+                    <div>
+                        <h1> Seguridad </h1>
+                        <a href="{% url 'password_change' %}">Change Password</a>
+                    </div>
+                </div>
+                
+                <div class="form-config2">
+                    {{form|crispy}}    
+                </div>
+                
+            </div>
+            
+
+            
         </form>
     </div>
-    <h1> Seguridad </h1>
-    <a href="{% url 'password_change' %}">Change Password</a>
+    
 
 {%endblock%}

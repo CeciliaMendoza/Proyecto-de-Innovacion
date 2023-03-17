@@ -1,0 +1,42 @@
+.form-config{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+
+    margin: 2rem;
+}
+
+input[type="text"], input[type="date"], input[type="file"]{
+    border: none;
+    width: 35rem;
+}
+
+.control-label{
+    font-size: 1.5rem;
+}
+
+.text-config{
+    text-align: center;
+}
+
+.img-config img{
+    height: 30rem;
+    width: 30rem;
+}
+
+.img-config{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    align-items: center;
+}
+
+.img-config button{
+    width: 15rem;
+}
+
+.form-group{
+    border: none;
+}
