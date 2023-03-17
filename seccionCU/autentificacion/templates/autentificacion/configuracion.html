@@ -29,14 +29,15 @@
     <h1 class="text-config"> Informacion general</h1>
 
     <div class="form-content">
-        <form method="post" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="form-config">
                 <div class="img-config">
                     <p>Foto actual</p>
+                    {%if request.user.photo%}
                     <img src="{{ request.user.photo.url }}" width="300px" height="300px"> 
-
+                    {%endif%}
                     <button type="submit" class="btn btn-dark btn-lg btn-config">Guardar Cambios</button>
 
                     <div>
@@ -56,5 +57,23 @@
         </form>
     </div>
     
-
+    <script>
+        if(document.querySelector("#photo-clear_id")){
+            document.querySelector("#photo-clear_id").remove();
+        }
+        if(document.querySelector("#div_id_photo > div > a")){
+            document.querySelector("#div_id_photo > div > a").remove();
+        }
+        if(document.querySelector("#div_id_photo > div > label")){
+            document.querySelector("#div_id_photo > div > label").remove();
+        }    
+        div2 = document.querySelector("#div_id_photo > div");
+        if(div2){
+            div2.removeChild(div2.firstChild);
+        }
+        if(document.querySelector("#div_id_photo > div > br")){
+            document.querySelector("#div_id_photo > div > br").remove();
+        }
+</script>
+    
 {%endblock%}

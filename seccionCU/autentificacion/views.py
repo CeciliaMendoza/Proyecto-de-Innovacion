@@ -79,13 +79,13 @@ def configuracion(request):
         #formulario
         form = Update_user(request.POST,request.FILES, instance=usuario)
         #si el formato es valido
-        if form.is_valid():
-            photo_new = form.cleaned_data.get("photo")      
-            if( (photo_new != request.user.photo.name)):
+        if form.is_valid() :
+            if(form.cleaned_data.get("photo")  != request.user.photo.name):
                 #si esta, eliminar la foto vieja
-                if os.path.exists(old_image) and (request.user.photo.name != "autentificacion/gato.jpg"):
-                    #remove la foto vieja
-                    os.remove(old_image)
+                if os.path.exists(old_image):
+                    if request.user.photo.name != "autentificacion/gato.jpg":
+                        #remove la foto vieja
+                        os.remove(old_image)
             form.save()
             messages.success(request, 'Your profile is updated successfully')
             return redirect("perfil")
@@ -93,7 +93,6 @@ def configuracion(request):
         form = Update_user(instance=usuario)
 
     return render(request, "autentificacion/configuracion.html", {"categorias":categorias, "form": form})
-
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'autentificacion/change_password.html'

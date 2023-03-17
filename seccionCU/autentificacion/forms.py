@@ -56,11 +56,10 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class Update_user(ModelForm):
-    photo = forms.ImageField(widget=forms.FileInput, label="Foto", required=False)
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','phone']
+        fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','phone', "photo"]
         labels = {
             'username': _('Nombre de usuario'),
             'first_name': _('Nombre'),
@@ -69,6 +68,7 @@ class Update_user(ModelForm):
             'birthdate': _('Fecha de nacimiento'),
             'phone': _('Telefono'),
             'address': _('Direccion'),
+            'photo': _('Foto'),
         }
         widgets = {
             'birthdate': forms.DateInput(format=('%Y-%m-%d'),attrs={'type': 'date'}),
