@@ -1,0 +1,28 @@
+.body-login{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.body-login img{
+    display: block;
+    width: 100%;
+    height: -webkit-fill-available;
+
+    object-fit: cover;
+}
+
+
+.div-login-mitad section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-login{
+    background-color: #FFE3E1;
+}
+
+.form-register{
+    margin: 0 2rem;
+}
