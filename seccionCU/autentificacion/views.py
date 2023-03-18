@@ -3,7 +3,7 @@ from django.views.generic import View
 import os
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm, Update_user, Crear_publicacion
+from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm, Update_user
 
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -20,7 +20,7 @@ def opciones_login(request):
 class VRegistro(View):
     def get(self, request):
         form = CustomUserCreationForm()
-        return render(request, "Autentificacion/register.html", {"form":form})
+        return render(request, "autentificacion/register.html", {"form":form})
         
     def post(self, request):
         form = CustomUserCreationForm(request.POST)
@@ -32,7 +32,7 @@ class VRegistro(View):
             for field, items in form.errors.items():
                 for item in items:
                     messages.error(request, '{}: {}'.format(field, item))
-            return render(request, "Autentificacion/register.html", {"form":form})
+            return render(request, "autentificacion/register.html", {"form":form})
 
 def login_user(request):
     if request.method=="POST":
@@ -98,28 +98,6 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'autentificacion/change_password.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('perfil')
-
-class crear_publicacion(View):
-
-    def get(self, request):
-        categorias = Categoria.objects.all()
-        form = Crear_publicacion(request.POST,request.FILES)
-        return render(request, "Autentificacion/crear_publicacion.html", {"categorias":categorias,"form":form})
-        
-    def post(self, request):
-        categorias = Categoria.objects.all()
-        form = Crear_publicacion(request.POST,request.FILES)
-        if form.is_valid():
-            publicacion = form.save(commit=False)
-            publicacion.autor = request.user
-            publicacion.save()
-            return redirect("perfil")
-        else:
-            for field, items in form.errors.items():
-                for item in items:
-                    messages.error(request, '{}: {}'.format(field, item))
-            return render(request, "Autentificacion/crear_publicacion.html", {"categorias":categorias,"form":form})
-        
 
 def delete_account(request):
     try:

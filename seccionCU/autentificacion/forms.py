@@ -22,7 +22,7 @@ class CustomUserCreationForm(forms.ModelForm):
             'first_name': _('Nombre'),
             'last_name': _('Apellido'),
             'career': _('Carrera'),
-
+            'email': _('Correo Electronico'),
         }
 
     def email_clean(self):  
@@ -74,12 +74,5 @@ class Update_user(ModelForm):
             'birthdate': forms.DateInput(format=('%Y-%m-%d'),attrs={'type': 'date'}),
         }
 
-
-class Crear_publicacion(ModelForm):
-
-    class Meta:
-        model = Publicaciones
-        fields = ['titulo', 'descripcion', 'precio','estado', 'categoria', 'imagen']
-        exclude = ['autor']
 
 
