@@ -1,6 +1,6 @@
 .form-config{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 2rem;
     justify-content: center;
 
@@ -39,4 +39,30 @@ input[type="text"], input[type="date"], input[type="file"]{
 
 .form-group{
     border: none;
+}
+
+.btn-config{
+    width: 15rem;
+}
+
+.btn-red{
+    color: white;
+    background-color: rgb(255, 59, 59);
+    border-color: 1px solid red;
+}
+
+.btn-rosa{
+    color: white;
+    background-color: #FF9494;
+    border-color: 1px solid #FF9494;
+}
+
+.enlaces-publi{
+    display: flex;
+    flex-direction: column;
+}
+
+.enlaces-publi img{
+    width: 4rem;
+    height: 4rem;
 }
