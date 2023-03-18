@@ -38,24 +38,26 @@
                     <img src="{{ request.user.photo.url }}" width="300px" height="300px"> 
                     {%endif%}
 
+                    <button type="submit" class="btn btn-lg btn-config btn-rosa" >Guardar Cambios</button>
+
                     <div>
-                        <h1> Seguridad </h1>
-                        <a href="{% url 'password_change' %}">Change Password</a>
+                        <a class="btn btn-lg btn-config btn-rosa" href="{% url 'password_change' %}">Cambiar Contraseña</a>
                     </div>
+
+                    <a href="{% url 'delete_account' %}">
+                        <input type="button" class="btn btn-lg btn-config btn-red" onclick="return confirm('Estas seguro? Esta accion eliminara tu cuenta por completo de nuestro sitio web  ')" value="Eliminar cuenta"/>
+                    </a>
                 </div>
                 
                 <div class="form-config2">
                     {{form|crispy}}    
-                    <button type="submit" class="btn btn-dark btn-lg btn-config" >Guardar Cambios</button>
                 </div>
                 
             </div>
         </form>
     </div>
 
-    <a href="{% url 'delete_account' %}">
-        <input type="button" onclick="return confirm('Estas seguro? Esta accion eliminara tu cuenta por completo de nuestro sitio web  ')" value="Eliminar cuenta"/>
-    </a>
+    
 
     <script>
         if(document.querySelector("#photo-clear_id")){
