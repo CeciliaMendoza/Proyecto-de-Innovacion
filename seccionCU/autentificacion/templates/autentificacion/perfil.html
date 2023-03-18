@@ -78,20 +78,30 @@
                 </div>
               {% endif %}
 
-              <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
-                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
+                        <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+            
+                        <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
         
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
-    
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                        <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
+                        <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
-    
+
+        <div class="enlaces-publi">
+            <a href="/">
+                <img src="../../static/autentificacion/img/eliminar.png">
+            </a>
+            
+            <a href="/">
+                <img src="../../static/autentificacion/img/editar.png">
+            </a>
+        </div>
+
         {%endfor%}
     
     </div>
