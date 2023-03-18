@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
+from crispy_forms.helper import FormHelper
 
 class CustomUserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -56,7 +57,6 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class Update_user(ModelForm):
-
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','phone', "photo"]

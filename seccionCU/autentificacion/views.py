@@ -60,8 +60,8 @@ def logout_user(request):
 def perfil(request):
     categorias = Categoria.objects.all()
     user = request.user
-    print(request.user.id)
-    publicaciones_user = Publicaciones.objects.filter(autor = user)
+    #print(request.user.id)
+    publicaciones_user = Publicaciones.objects.filter(autor = user).order_by("-created")
     return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})
 
 def configuracion(request):
@@ -119,3 +119,15 @@ class crear_publicacion(View):
                 for item in items:
                     messages.error(request, '{}: {}'.format(field, item))
             return render(request, "Autentificacion/crear_publicacion.html", {"categorias":categorias,"form":form})
+        
+
+def delete_account(request):
+    try:
+        usuario = User.objects.get(id=request.user.id)
+        usuario.delete()
+    except User.DoesNotExist:
+        messages.error(request, "User doesnot exist")    
+        return redirect("opciones_login")
+    except Exception as e:
+        print(e.message)
+    return redirect("opciones_login")
