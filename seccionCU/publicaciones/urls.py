@@ -7,5 +7,7 @@ urlpatterns = [
     path("busqueda/", views.busquedas, name="busqueda"),
     path("create/", crear_publicacion.as_view(), name="create"),
     path("update/<int:publicacion_id>", views.update_publicacion, name="update"),
+    path("delete/<int:publicacion_id>", views.delete_publicacion, name="delete"),
 
 ]
+

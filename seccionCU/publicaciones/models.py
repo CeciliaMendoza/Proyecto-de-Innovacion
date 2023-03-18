@@ -30,7 +30,12 @@ class Publicaciones(models.Model):
 
     def __str__(self):
         return self.titulo
-    
+    @property
+    def get_image_url(self):
+        if self.imagen and hasattr(self.imagen, 'url'):
+            return self.imagen.url
+        else:
+            return "" 
 class Solicitudes(models.Model):
     publicacion = models.ForeignKey(Publicaciones, on_delete=models.CASCADE)
     solicitante = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -4,18 +4,13 @@
 {% load crispy_forms_tags %}
 
 {%block content%}
-    {% if form.errors %}
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div id="form_errors">
-                {% for key, value in form.errors.items %}
-                    <strong>{{ value }}</strong>
-                {% endfor %}
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    {% endif %}
+    <!-- luego lo pasas a otro lado xd-->
+    <style>
+    #imagen_publicacion{
+        display: block;
+        width: 20%;
+    }
+    </style>
 
     {% if messages %}
     <ul class="messages">
@@ -25,7 +20,7 @@
     </ul>
     {% endif %}
     
-    <h1 class="text-config"> Informacion general</h1>
+    <h1 class="text-config">Actualizacion publicacion</h1>
 
     <div class="form-content">
         <form method="POST" enctype="multipart/form-data" name = "form_update">
@@ -43,21 +38,10 @@
 
 
     <script>
-        if(document.querySelector("#photo-clear_id")){
-            document.querySelector("#photo-clear_id").remove();
+        if(document.querySelector("#div_id_imagen > div")){
+            elemento = document.querySelector("#div_id_imagen > div");
+            elemento_a = elemento.getElementsByTagName("a");
+            elemento_a[0].innerHTML = "<img src= "+ elemento_a[0].href + " id ='imagen_publicacion' >"
         }
-        if(document.querySelector("#div_id_photo > div > a")){
-            document.querySelector("#div_id_photo > div > a").remove();
-        }
-        if(document.querySelector("#div_id_photo > div > label")){
-            document.querySelector("#div_id_photo > div > label").remove();
-        }    
-        div2 = document.querySelector("#div_id_photo > div");
-        if(div2){
-            div2.removeChild(div2.firstChild);
-        }
-        if(document.querySelector("#div_id_photo > div > br")){
-            document.querySelector("#div_id_photo > div > br").remove();
-        }
-</script>
+    </script>
 {%endblock%}

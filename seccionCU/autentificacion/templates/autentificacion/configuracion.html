@@ -35,9 +35,11 @@
                 <div class="img-config">
                     <p>Foto actual</p>
                     {%if request.user.photo%}
-                    <img src="{{ request.user.photo.url }}" width="300px" height="300px"> 
+                        <img class="img-perfil" src="{{request.user.photo.url }}" width="300px" height="300px">
+                    {%else%}
+                        <img class="img-perfil" src="{% static 'autentificacion/img/gato.jpg' %}" width="300px" height="300px">
                     {%endif%}
-
+                    
                     <button type="submit" class="btn btn-lg btn-config btn-rosa" >Guardar Cambios</button>
 
                     <div>
@@ -76,5 +78,5 @@
         if(document.querySelector("#div_id_photo > div > br")){
             document.querySelector("#div_id_photo > div > br").remove();
         }
-</script>
+    </script>
 {%endblock%}

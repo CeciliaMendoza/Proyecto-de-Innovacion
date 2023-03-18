@@ -73,6 +73,3 @@ class Update_user(ModelForm):
         widgets = {
             'birthdate': forms.DateInput(format=('%Y-%m-%d'),attrs={'type': 'date'}),
         }
-
-
-

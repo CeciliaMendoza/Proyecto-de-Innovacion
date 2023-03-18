@@ -23,7 +23,8 @@
 
         {% if usuario.photo %}
             <img class="img-perfil" src="{{usuario.photo.url}}" >
-    
+        {%else%}
+            <img class="img-perfil" src="{% static 'autentificacion/img/gato.jpg' %}">
         {%endif%}
     
         <div class="apartados-perfil">
@@ -93,12 +94,12 @@
         </div>
 
         <div class="enlaces-publi">
-            <a href="/">
-                <img src="../../static/autentificacion/img/eliminar.png">
+            <a href="{% url 'delete' publicacion.id%}" onclick="return confirm('Estas seguro? Esta accion eliminara esta publicacion')" >
+                <img src="{% static 'autentificacion/img/eliminar.png' %}">
             </a>
-            
-            <a href="/">
-                <img src="../../static/autentificacion/img/editar.png">
+        
+            <a href="{% url 'update' publicacion.id%}">
+                <img src="{% static 'autentificacion/img/editar.png' %}">
             </a>
         </div>
 

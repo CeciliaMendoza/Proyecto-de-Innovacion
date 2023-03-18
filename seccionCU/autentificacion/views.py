@@ -70,22 +70,10 @@ def configuracion(request):
     usuario = User.objects.get(id=request.user.id)
 
     if request.method == 'POST':
-        #imagen antigua
-        old_image = ""
-        #revisa si tiene foto
-        if request.user.photo:
-            #path de la foto
-            old_image = request.user.photo.path
         #formulario
         form = Update_user(request.POST,request.FILES, instance=usuario)
         #si el formato es valido
         if form.is_valid() :
-            if(form.cleaned_data.get("photo")  != request.user.photo.name):
-                #si esta, eliminar la foto vieja
-                if os.path.exists(old_image):
-                    if request.user.photo.name != "autentificacion/gato.jpg":
-                        #remove la foto vieja
-                        os.remove(old_image)
             form.save()
             messages.success(request, 'Your profile is updated successfully')
             return redirect("perfil")

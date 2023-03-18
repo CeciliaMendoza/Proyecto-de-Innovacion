@@ -68,33 +68,21 @@ class crear_publicacion(View):
 def update_publicacion(request, publicacion_id):
     categorias = Categoria.objects.all()
 
-    usuario = Publicaciones.objects.get(id=publicacion_id)
-
-    if request.method == 'GET':
-        """       
-        #imagen antigua
-        old_image = ""
-        #revisa si tiene foto
-        if request.user.photo:
-            #path de la foto
-            old_image = request.user.photo.path
-        #formulario
-        form = Update_publicacion_form(request.POST,request.FILES, instance=usuario)
-        #si el formato es valido
-        if form.is_valid() :
-            if(form.cleaned_data.get("photo")  != request.user.photo.name):
-                #si esta, eliminar la foto vieja
-                if os.path.exists(old_image):
-                    if request.user.photo.name != "autentificacion/gato.jpg":
-                        #remove la foto vieja
-                        os.remove(old_image)
+    publicacion = Publicaciones.objects.get(id=publicacion_id)
+    if request.method == 'POST':
+        form = Update_publicacion_form(request.POST,request.FILES, instance=publicacion)
+        if form.is_valid():
             form.save()
-            messages.success(request, 'Your profile is updated successfully')
             return redirect("perfil")
-        """
-        form = Update_publicacion_form(request.POST,request.FILES, instance=usuario)
-        print("sdsd")
     else:
-        form = Update_publicacion_form(instance=usuario)
+        form = Update_publicacion_form(instance=publicacion)
 
-    return render(request, "autentificacion/configuracion.html", {"categorias":categorias, "form": form})
+    return render(request, "publicaciones/update_publicacion.html", {"categorias":categorias, "form": form})
+
+def delete_publicacion(request, publicacion_id):
+    try:
+        publicacion = Publicaciones.objects.get(id=publicacion_id)
+        publicacion.delete()
+    except Exception as e:
+        print(e.message)
+    return redirect("perfil")
