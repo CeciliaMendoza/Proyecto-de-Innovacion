@@ -1,0 +1,53 @@
+{% extends 'publicaciones/nav.html' %}
+
+{% load static %}
+
+{%block content%}
+
+
+<style>
+    img{
+        width: 20%;
+    }
+</style>
+
+
+<div class="contenido_perfil">
+
+    <div class="cont-perfil-img">
+
+        {% if publicacion.imagen %}
+            <img class="img-perfil" src="{{publicacion.imagen.url}}" >
+        {%endif%}
+    </div>
+    
+    <div class="cont-datosPerfil">
+    
+        <h2>
+            <span>Titulo: </span>
+            {{ publicacion.titulo }}
+        </h2>
+        <h2>
+            <span>Descripcion: </span>
+            {{ publicacion.descripcion }}
+        </h2>
+        <h2>
+            <span>Precio: </span>
+            {{ publicacion.precio }}
+        </h2>
+        <h2>
+            <span>Categoria: </span>
+            {{ publicacion.categoria.nombre }}
+        </h2>
+        <h2>
+            <span>Autor: </span>
+            {{ publicacion.autor.username }}
+        </h2>
+ 
+    
+    </div>
+
+</div>
+
+
+{%endblock%}

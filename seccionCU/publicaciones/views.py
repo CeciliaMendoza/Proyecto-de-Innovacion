@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Categoria, Publicaciones
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 from django.core.paginator import Paginator
 from publicaciones.forms import Crear_publicacion_form, Update_publicacion_form
 import os
@@ -86,3 +89,10 @@ def delete_publicacion(request, publicacion_id):
     except Exception as e:
         print(e.message)
     return redirect("perfil")
+
+def publicacion(request, publicacion_id):
+    categorias = Categoria.objects.all()
+    publicacion = Publicaciones.objects.get(id=publicacion_id)
+
+    autor = User.objects.get(id = publicacion.autor.id)
+    return render(request, "publicaciones/publicacion.html", {"categorias":categorias, "publicacion": publicacion, "autor" : autor})
