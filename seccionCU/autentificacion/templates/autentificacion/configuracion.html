@@ -31,7 +31,8 @@
         <form method="POST" enctype="multipart/form-data" name = "form_update">
             {% csrf_token %}
 
-            <div class="form-configuracion">
+            <div class="form_config" style="display: grid;
+            grid-template-columns: repeat(2, 1fr);">
                 <div class="img-config">
                     <p>Foto actual</p>
                     {%if request.user.photo%}

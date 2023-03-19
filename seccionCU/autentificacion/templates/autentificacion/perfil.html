@@ -2,6 +2,8 @@
 
 {% load static %}
 
+<link href="{% static 'autentificacion/css/config.css'%}" rel="stylesheet">
+
 {%block content%}
 <style>
     img{
@@ -91,17 +93,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="enlaces-publi">
+                <a href="{% url 'delete' publicacion.id%}" onclick="return confirm('Estas seguro? Esta accion eliminara esta publicacion')" >Eliminar</a>
+            
+                <a href="{% url 'update' publicacion.id%}">Actualizar</a>
+            </div>
+
         </div>
 
-        <div class="enlaces-publi">
-            <a href="{% url 'delete' publicacion.id%}" onclick="return confirm('Estas seguro? Esta accion eliminara esta publicacion')" >
-                <img src="{% static 'autentificacion/img/eliminar.png' %}">
-            </a>
         
-            <a href="{% url 'update' publicacion.id%}">
-                <img src="{% static 'autentificacion/img/editar.png' %}">
-            </a>
-        </div>
 
         {%endfor%}
     
