@@ -1,3 +1,8 @@
+.form-config{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 input[type="text"], input[type="date"], input[type="file"]{
     border: none;
     width: 35rem;
@@ -42,6 +47,12 @@ input[type="text"], input[type="date"], input[type="file"]{
     border-color: 1px solid red;
 }
 
+.btn-green{
+    color: white;
+    background-color: rgb(75, 212, 41);
+    border-color: 1px solid rgb(75, 212, 41);
+}
+
 .btn-rosa{
     color: white;
     background-color: #FF9494;
@@ -51,5 +62,16 @@ input[type="text"], input[type="date"], input[type="file"]{
 .enlaces-publi{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+
+.enlaces-publi a{
+    margin: 0 1rem;
+}
+
+.enlaces-publi a:hover{
+    text-decoration: none;
+    color: white;
 }
 
