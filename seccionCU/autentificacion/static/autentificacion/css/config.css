@@ -53,3 +53,7 @@ input[type="text"], input[type="date"], input[type="file"]{
     grid-template-columns: repeat(2, 1fr);
 }
 
+.enlaces-publi img{
+    width: 4rem;
+    height: 4rem;
+}

@@ -1,6 +1,6 @@
 .contenido_perfil{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
 
     margin: 2rem;
 }
@@ -29,7 +29,7 @@
 }
 
 .cont-datosPerfil h2{
-    color: #FF9494;
+    color: #00ff0d;
 
     border-bottom: 3.5px solid #FF9494;
 

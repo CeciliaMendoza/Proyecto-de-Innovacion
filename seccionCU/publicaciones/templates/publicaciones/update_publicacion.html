@@ -25,9 +25,9 @@
     <div class="form-content">
         <form method="POST" enctype="multipart/form-data" name = "form_update">
             {% csrf_token %}
-            <div class="form-config">
+            <div class="form-configuracion">
             
-                <div class="form-config2">
+                <div class="form-configuracion2">
                     {{form|crispy}}    
                     <button type="submit" class="btn btn-dark btn-lg btn-config" >Guardar Cambios</button>
                 </div>
