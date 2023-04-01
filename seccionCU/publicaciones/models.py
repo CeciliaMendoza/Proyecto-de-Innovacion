@@ -1,5 +1,6 @@
 from django.db import models
 from autentificacion.models import User
+from django.db.models import Avg
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
@@ -36,6 +37,10 @@ class Publicaciones(models.Model):
             return self.imagen.url
         else:
             return "" 
+        
+    def average_rating(self):
+        return Puntuacion.objects.filter(publicacion=self).aggregate(Avg("valoracion"))["valoracion__avg"] or 0
+
 class Solicitudes(models.Model):
     publicacion = models.ForeignKey(Publicaciones, on_delete=models.CASCADE)
     solicitante = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -45,6 +50,8 @@ class Solicitudes(models.Model):
 class Puntuacion(models.Model):
     publicacion = models.ForeignKey(Publicaciones, on_delete=models.CASCADE)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    valoracion = models.IntegerField(blank=True, null=True)
+    valoracion = models.IntegerField(blank=True, null=True, default=0)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.publicacion.titulo}: {self.valoracion}"

@@ -3,14 +3,31 @@
 {% load static %}
 
 {%block content%}
+<link href="{% static 'publicaciones/assets/css/ranking.css' %}" rel="stylesheet">
 
 
 <style>
     img{
         width: 20%;
     }
-</style>
 
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover{
+      color: white;  
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .checked:hover {
+        color: white;
+    }
+</style>
 
 <div class="contenido_perfil">
 
@@ -43,19 +60,26 @@
             <span>Autor: </span>
             {{ publicacion.autor.username }}
         </h2>
- 
-        <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5" />
-            <label for="star5">5 stars</label>
-            <input type="radio" id="star4" name="rating" value="4" />
-            <label for="star4">4 stars</label>
-            <input type="radio" id="star3" name="rating" value="3" />
-            <label for="star3">3 stars</label>
-            <input type="radio" id="star2" name="rating" value="2" />
-            <label for="star2">2 stars</label>
-            <input type="radio" id="star1" name="rating" value="1" />
-            <label for="star1">1 star</label>
-        </fieldset>
+
+        <h5 class="card-title">
+            <a href="{%url 'rating' publicacion.id 1%}">
+                <span class="fa fa-star {% if publicacion.average_rating > 0 %}checked {% endif %}" title = "1 Estrella"></span>
+            </a>
+            <a href="{%url 'rating' publicacion.id 2%}">
+                <span class="fa fa-star {% if publicacion.average_rating > 1 %}checked {% endif %}" title = "2 Estrella"></span>
+            </a>
+            <a href="{%url 'rating' publicacion.id 3%}">            
+                <span class="fa fa-star {% if publicacion.average_rating > 2 %}checked {% endif %}" title = "3 Estrella"></span>
+            </a>
+            <a href="{%url 'rating' publicacion.id 4%}">
+                <span class="fa fa-star {% if publicacion.average_rating > 3 %}checked {% endif %}" title = "4 Estrella"></span>
+            </a>
+            <a href="{%url 'rating' publicacion.id 5%}">
+                <span class="fa fa-star {% if publicacion.average_rating > 4 %}checked {% endif %}" title = "5 Estrella"></span>
+            </a>
+
+        </h5>
+
     </div>
 
 </div>

@@ -9,6 +9,7 @@ urlpatterns = [
     path("update/<int:publicacion_id>", views.update_publicacion, name="update"),
     path("delete/<int:publicacion_id>", views.delete_publicacion, name="delete"),
     path("post/<int:publicacion_id>", views.publicacion, name="publicacion"),
+    path('rate/<int:publicacion_id>/<int:rating>/', views.rate, name="rating"),
 
 ]
 

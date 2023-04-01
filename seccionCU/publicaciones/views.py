@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Categoria, Publicaciones
+from .models import Categoria, Publicaciones, Puntuacion
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -89,10 +89,21 @@ def delete_publicacion(request, publicacion_id):
     except Exception as e:
         print(e.message)
     return redirect("perfil")
+from django.db.models import Avg
 
 def publicacion(request, publicacion_id):
     categorias = Categoria.objects.all()
     publicacion = Publicaciones.objects.get(id=publicacion_id)
-
     autor = User.objects.get(id = publicacion.autor.id)
+
+    p = Puntuacion.objects.filter(publicacion=publicacion).aggregate(Avg("valoracion"))["valoracion__avg"]
+    print(p)
     return render(request, "publicaciones/publicacion.html", {"categorias":categorias, "publicacion": publicacion, "autor" : autor})
+
+def rate(request, publicacion_id, rating):
+    post = Publicaciones.objects.get(id=publicacion_id)
+    delete_row = Puntuacion.objects.filter(publicacion=post, usuario=request.user)
+    delete_row.delete()
+    puntuacion_row = Puntuacion.objects.create(publicacion=post, usuario=request.user, valoracion=rating)
+    puntuacion_row.save()
+    return redirect(publicacion, publicacion_id= publicacion_id)
