@@ -1,43 +1,48 @@
 from django import forms
 from autentificacion.models import User
-from publicaciones.models import Publicaciones
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
-from crispy_forms.helper import FormHelper
+from django.core.validators import RegexValidator
+import re 
 
 class CustomUserCreationForm(forms.ModelForm):
-    """A form for creating new users. Includes all the required
-    fields, plus a repeated password."""
-
+    email =  forms.EmailField(
+        validators=[
+            RegexValidator(
+                "@alumnos\.uacj\.mx$",
+                message="Debe utilizar un correo institucional"
+            )
+        ],
+        label="Correo electronico"
+    )
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('username','first_name','last_name', 'career', 'email')
+        fields = ('username','first_name','last_name', 'career')
         labels = {
             'username': _('Nombre de usuario'),
             'first_name': _('Nombre'),
             'last_name': _('Apellido'),
             'career': _('Carrera'),
-            'email': _('Correo Electronico'),
         }
 
     def email_clean(self):  
-        email = self.cleaned_data['email'].lower()  
+        email = self.cleaned_data.get("email")
+        print(email)
         new = User.objects.filter(email=email)  
         if new.count():  
-            raise ValidationError(" Email Already Exist")  
-        return email  
-
+            raise forms.ValidationError("Este correo ya esta registrado")  
+        return email
+       
     def clean_password2(self):
-        # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+            raise forms.ValidationError("Las contraseñas no coinciden")
         return password2
 
     def save(self, commit=True):

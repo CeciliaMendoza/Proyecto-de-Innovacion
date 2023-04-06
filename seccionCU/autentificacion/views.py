@@ -29,9 +29,6 @@ class VRegistro(View):
             login(request, usuario)
             return redirect("opciones_login")
         else:
-            for field, items in form.errors.items():
-                for item in items:
-                    messages.error(request, '{}: {}'.format(field, item))
             return render(request, "autentificacion/register.html", {"form":form})
 
 def login_user(request):
@@ -60,7 +57,6 @@ def logout_user(request):
 def perfil(request):
     categorias = Categoria.objects.all()
     user = request.user
-    #print(request.user.id)
     publicaciones_user = Publicaciones.objects.filter(autor = user).order_by("-created")
     return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})
 
@@ -106,6 +102,5 @@ def delete_account(request):
 def perfil_id(request, id):
     categorias = Categoria.objects.all()
     user = User.objects.get(id=id)
-    #print(request.user.id)
     publicaciones_user = Publicaciones.objects.filter(autor = user).order_by("-created")
     return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})
