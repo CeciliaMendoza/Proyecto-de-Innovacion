@@ -1,17 +1,19 @@
+from django.views.generic import View
 from django.shortcuts import render, redirect
-from .models import Categoria, Publicaciones, Puntuacion
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.contrib import messages
+from django.core.paginator import Paginator
+from django.utils.decorators import method_decorator
+from publicaciones.forms import Crear_publicacion_form, Update_publicacion_form
+from .models import Categoria, Publicaciones, Puntuacion, Solicitudes
 User = get_user_model()
 
-from django.core.paginator import Paginator
-from publicaciones.forms import Crear_publicacion_form, Update_publicacion_form
-import os
-from django.contrib import messages
-from django.views.generic import View
 # Create your views here.
 
+@login_required
 def principal(request):
-    publicaciones_all = Publicaciones.objects.all()
+    publicaciones_all = Publicaciones.objects.all().order_by("-created")
     categorias = Categoria.objects.all()
     # Show 5 contacts per page.
     paginator = Paginator(publicaciones_all, 6) 
@@ -21,11 +23,12 @@ def principal(request):
 
     return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias})
 
+@login_required
 def categoria(request, categoria_id):
     categorias = Categoria.objects.all()
     #categoria seleccionada
     categoria = Categoria.objects.get(id=categoria_id)
-    publicaciones_all = Publicaciones.objects.filter(categoria=categoria)
+    publicaciones_all = Publicaciones.objects.filter(categoria=categoria).order_by("-created")
     # Show 5 contacts per page.
     paginator = Paginator(publicaciones_all, 6) 
     #obtiene el numeor de pagina 
@@ -34,13 +37,14 @@ def categoria(request, categoria_id):
 
     return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias})
 
+@login_required
 def busquedas(request):
     categorias = Categoria.objects.all()
     if request.method == "GET":
         #busqueda
         query = request.GET.get('busqueda')
         #buscar sobre el campo titulo
-        publicaciones_all= Publicaciones.objects.filter(titulo__contains=query)
+        publicaciones_all= Publicaciones.objects.filter(titulo__contains=query).order_by("-created")
         # Show 5 contacts per page.
         paginator = Paginator(publicaciones_all, 6) 
         #obtiene el numeor de pagina 
@@ -48,6 +52,7 @@ def busquedas(request):
         publicaciones = paginator.get_page(page_number)
     return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias})
 
+@method_decorator(login_required, name='dispatch')
 class crear_publicacion(View):
     def get(self, request):
         categorias = Categoria.objects.all()
@@ -67,7 +72,8 @@ class crear_publicacion(View):
                 for item in items:
                     messages.error(request, '{}: {}'.format(field, item))
             return render(request, "publicaciones/crear_publicacion.html", {"categorias":categorias,"form":form})
-        
+
+@login_required
 def update_publicacion(request, publicacion_id):
     categorias = Categoria.objects.all()
 
@@ -82,6 +88,7 @@ def update_publicacion(request, publicacion_id):
 
     return render(request, "publicaciones/update_publicacion.html", {"categorias":categorias, "form": form})
 
+@login_required
 def delete_publicacion(request, publicacion_id):
     try:
         publicacion = Publicaciones.objects.get(id=publicacion_id)
@@ -91,15 +98,15 @@ def delete_publicacion(request, publicacion_id):
     return redirect("perfil")
 from django.db.models import Avg
 
+@login_required
 def publicacion(request, publicacion_id):
     categorias = Categoria.objects.all()
     publicacion = Publicaciones.objects.get(id=publicacion_id)
     autor = User.objects.get(id = publicacion.autor.id)
 
-    p = Puntuacion.objects.filter(publicacion=publicacion).aggregate(Avg("valoracion"))["valoracion__avg"]
-    print(p)
-    return render(request, "publicaciones/publicacion.html", {"categorias":categorias, "publicacion": publicacion, "autor" : autor})
-
+    valoraciones_count = Puntuacion.objects.filter(publicacion=publicacion).count()
+    return render(request, "publicaciones/publicacion.html", {"categorias":categorias, "publicacion": publicacion, "autor" : autor, "valoraciones_count" : valoraciones_count})
+@login_required
 def rate(request, publicacion_id, rating):
     post = Publicaciones.objects.get(id=publicacion_id)
     delete_row = Puntuacion.objects.filter(publicacion=post, usuario=request.user)
@@ -107,3 +114,17 @@ def rate(request, publicacion_id, rating):
     puntuacion_row = Puntuacion.objects.create(publicacion=post, usuario=request.user, valoracion=rating)
     puntuacion_row.save()
     return redirect(publicacion, publicacion_id= publicacion_id)
+
+@login_required
+def solicitar(request, publicacion_id):
+    #registro de la solicitud en la bd 
+    post = Publicaciones.objects.get(id=publicacion_id)
+    solicitud = Solicitudes.objects.create(publicacion = post, solicitante = request.user)
+    solicitud.save()
+    messages.success(request, "Su solicitud ha sido enviada con exito!")
+
+    #correo a la otra persona
+
+    return redirect(publicacion, publicacion_id= publicacion_id)
+
+

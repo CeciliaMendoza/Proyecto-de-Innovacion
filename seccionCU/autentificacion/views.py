@@ -4,7 +4,7 @@ import os
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from autentificacion.forms import CustomUserCreationForm, CustomAuthenticationForm, Update_user
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -56,7 +56,7 @@ def logout_user(request):
     logout(request)
     return redirect("opciones_login")
 
-
+@login_required
 def perfil(request):
     categorias = Categoria.objects.all()
     user = request.user
@@ -64,6 +64,7 @@ def perfil(request):
     publicaciones_user = Publicaciones.objects.filter(autor = user).order_by("-created")
     return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})
 
+@login_required
 def configuracion(request):
     categorias = Categoria.objects.all()
 
@@ -87,6 +88,7 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('perfil')
 
+@login_required
 def delete_account(request):
     try:
         usuario = User.objects.get(id=request.user.id)
@@ -96,4 +98,14 @@ def delete_account(request):
         return redirect("opciones_login")
     except Exception as e:
         print(e.message)
-    return redirect("opciones_login")
+    finally:
+        return redirect("opciones_login")
+    
+
+@login_required
+def perfil_id(request, id):
+    categorias = Categoria.objects.all()
+    user = User.objects.get(id=id)
+    #print(request.user.id)
+    publicaciones_user = Publicaciones.objects.filter(autor = user).order_by("-created")
+    return render(request, "autentificacion/perfil.html", {"categorias":categorias, "usuario":user, "publicaciones" : publicaciones_user})

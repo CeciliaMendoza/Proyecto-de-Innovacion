@@ -11,12 +11,12 @@
         width: 20%;
     }
 
-    a{
-        text-decoration: none;
+    a.rating{
+        text-decoration: none!important;
         color: black;
     }
     
-    a:hover{
+    a.rating:hover{
       color: white;  
     }
 
@@ -27,10 +27,19 @@
     .checked:hover {
         color: white;
     }
+
+    a{
+        text-decoration: none!important;
+    }
 </style>
-
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 <div class="contenido_perfil">
-
     <div class="cont-perfil-img">
 
         {% if publicacion.imagen %}
@@ -58,28 +67,34 @@
         </h2>
         <h2>
             <span>Autor: </span>
-            {{ publicacion.autor.username }}
+            <a href = "{%url 'perfil_id' publicacion.autor.id%}">
+                {{ publicacion.autor.username }}
+            </a>
         </h2>
 
         <h5 class="card-title">
-            <a href="{%url 'rating' publicacion.id 1%}">
+            <a class="rating" href="{%url 'rating' publicacion.id 1%}">
                 <span class="fa fa-star {% if publicacion.average_rating > 0 %}checked {% endif %}" title = "1 Estrella"></span>
             </a>
-            <a href="{%url 'rating' publicacion.id 2%}">
+            <a class="rating"  href="{%url 'rating' publicacion.id 2%}">
                 <span class="fa fa-star {% if publicacion.average_rating > 1 %}checked {% endif %}" title = "2 Estrella"></span>
             </a>
-            <a href="{%url 'rating' publicacion.id 3%}">            
+            <a class="rating" href="{%url 'rating' publicacion.id 3%}">            
                 <span class="fa fa-star {% if publicacion.average_rating > 2 %}checked {% endif %}" title = "3 Estrella"></span>
             </a>
-            <a href="{%url 'rating' publicacion.id 4%}">
+            <a class="rating" href="{%url 'rating' publicacion.id 4%}">
                 <span class="fa fa-star {% if publicacion.average_rating > 3 %}checked {% endif %}" title = "4 Estrella"></span>
             </a>
-            <a href="{%url 'rating' publicacion.id 5%}">
+            <a class="rating" href="{%url 'rating' publicacion.id 5%}">
                 <span class="fa fa-star {% if publicacion.average_rating > 4 %}checked {% endif %}" title = "5 Estrella"></span>
             </a>
-
         </h5>
-
+        <h5>
+            Esta publicacion ha sido valorada por {{valoraciones_count}} usuarios
+        </h5>
+        <a href="{% url 'solicitar' publicacion.id%}">
+            <button class="btn btn-primary" >Solicitar</button>
+        </a>
     </div>
 
 </div>
