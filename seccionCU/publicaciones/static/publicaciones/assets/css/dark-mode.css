@@ -1,0 +1,26 @@
+.dark-mode-button{
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+}
+
+.dark-mode-button:hover{
+    cursor: pointer;
+}
+
+.dark-mode{
+    background-color: #52616B;
+
+}
+
+.dark-mode nav:first-of-type{
+    background-color: #1E2022;
+}
+
+.dark-mode .card{
+    background-color: #C9D6DF;
+}
+
+.dark-mode .icono-dark{
+    filter: invert(100%);
+}

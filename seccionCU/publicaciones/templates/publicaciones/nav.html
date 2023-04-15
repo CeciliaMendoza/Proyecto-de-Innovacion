@@ -23,6 +23,7 @@
     <link href="{% static 'publicaciones/assets/css/perfil.css' %}" rel="stylesheet">
     <link href="{% static 'publicaciones/assets/css/config.css' %}" rel="stylesheet">
     <link href="{% static 'publicaciones/assets/css/login-Registro.css' %}" rel="stylesheet">
+    <link href="{% static 'publicaciones/assets/css/dark-mode.css' %}" rel="stylesheet">
     
     
     <!-- sub nav -->
@@ -149,6 +150,8 @@
           </li>            
         </ul>
 
+        <img class="dark-mode-button icono-dark" src="../../static/publicaciones/assets/images/moon.png">
+
         <div class="search-container">
           <form action="{% url 'busqueda'%}" method="get">
             <input class="search" id="searchleft" type="search" name="busqueda" placeholder="Busqueda">
@@ -167,10 +170,10 @@
     {% endblock%}
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-
     <script src="{% static 'publicaciones/assets/js/isotope.min.js'%}"></script>
     <script src="{% static 'publicaciones/assets/js/tabs.js'%}"></script>
     <script src="{% static 'publicaciones/assets/js/custom.js'%}"></script>
+    <script src="{% static 'publicaciones/assets/js/dark-mode.js'%}"></script>
 
 
   </body>
