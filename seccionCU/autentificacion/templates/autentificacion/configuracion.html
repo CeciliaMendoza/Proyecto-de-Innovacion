@@ -34,7 +34,7 @@
             <div id="form_config" style="display: grid;
             grid-template-columns: repeat(2, 1fr);">
                 <div class="img-config">
-                    <p>Foto actual</p>
+                    <br>
                     {%if request.user.photo%}
                         <img class="img-perfil" src="{{request.user.photo.url }}" width="300px" height="300px">
                     {%else%}

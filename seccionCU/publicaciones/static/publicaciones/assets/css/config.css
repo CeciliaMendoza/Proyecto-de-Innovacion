@@ -8,6 +8,10 @@ input[type="text"], input[type="date"], input[type="file"]{
     width: 35rem;
 }
 
+input[type="file"]{
+    background-color: transparent;
+}
+
 .control-label{
     font-size: 1.5rem;
 }
@@ -45,12 +49,6 @@ input[type="text"], input[type="date"], input[type="file"]{
     color: white;
     background-color: rgb(255, 59, 59);
     border-color: 1px solid red;
-}
-
-.btn-green{
-    color: white;
-    background-color: rgb(75, 212, 41);
-    border-color: 1px solid rgb(75, 212, 41);
 }
 
 .btn-rosa{

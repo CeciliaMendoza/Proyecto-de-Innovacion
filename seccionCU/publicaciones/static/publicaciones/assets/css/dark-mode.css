@@ -10,7 +10,6 @@
 
 .dark-mode{
     background-color: #52616B;
-
 }
 
 .dark-mode nav:first-of-type{
@@ -24,3 +23,43 @@
 .dark-mode .icono-dark{
     filter: invert(100%);
 }
+
+.dark-mode .apartados-perfil a{
+    color: #C9D6DF;
+}
+
+.dark-mode .btn-rosa{
+    color: white;
+    background-color: #C9D6DF;
+    border-color: 1px solid #C9D6DF;
+}
+
+.dark-mode input[type="text"], input[type="date"]{
+    background-color: #C9D6DF;
+    border: none;
+    width: 35rem;
+}
+
+.dark-mode h1{
+    color: #C9D6DF;
+}
+
+.dark-mode h2{
+    color: #C9D6DF;
+    border-bottom: 3.5px solid #C9D6DF;
+}
+
+.dark-mode .page-link{
+    background-color: #C9D6DF;
+    color: white;
+}
+
+.dark-mode .page-item.active .page-link{
+    background-color: #1E2022;
+    border-color: #1E2022;
+}
+
+
+
+
+

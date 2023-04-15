@@ -149,9 +149,9 @@
             <a class="nav-link" href="{% url 'logout'%}">Cerrar Sesión</a>
           </li>            
         </ul>
-        <a class="nav-btn" id="dark-mode-toggle">
-        <img class="dark-mode-button icono-dark" src="../../static/publicaciones/assets/images/moon.png">
-          </a>
+        <div class="nav-btn" id="dark-mode-toggle">
+          <img class="dark-mode-button icono-dark" src="../../static/publicaciones/assets/images/moon.png">
+        </div>
         <div class="search-container">
           <form action="{% url 'busqueda'%}" method="get">
             <input class="search" id="searchleft" type="search" name="busqueda" placeholder="Busqueda">
