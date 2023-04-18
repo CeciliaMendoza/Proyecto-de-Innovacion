@@ -4,9 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.core import mail
 from django.utils.decorators import method_decorator
 from publicaciones.forms import Crear_publicacion_form, Update_publicacion_form
 from .models import Categoria, Publicaciones, Puntuacion, Solicitudes
+from django.conf import settings
+from django.template import Context
+from django.template.loader import get_template
+
 User = get_user_model()
 
 # Create your views here.
@@ -117,13 +122,29 @@ def rate(request, publicacion_id, rating):
 
 @login_required
 def solicitar(request, publicacion_id):
-    #registro de la solicitud en la bd 
-    post = Publicaciones.objects.get(id=publicacion_id)
-    solicitud = Solicitudes.objects.create(publicacion = post, solicitante = request.user)
-    solicitud.save()
-    messages.success(request, "Su solicitud ha sido enviada con exito!")
-
-    #correo a la otra persona
+    with mail.get_connection() as connection:
+        #get data
+        post = Publicaciones.objects.get(id=publicacion_id)
+        usuario = User.objects.get(id=request.user.id)
+        #Enviar el correo
+        message = get_template("publicaciones/email.html").render({
+            'post': post, 'usuario' : usuario
+        })
+        correo = mail.EmailMessage(
+            subject="Solicitud de pedido",
+            body=message,
+            from_email=settings.EMAIL_HOST_USER,
+            to=[post.autor.email],
+            reply_to=[usuario.email],
+            connection=connection,
+        )
+        correo.content_subtype = "html"
+        correo.send()
+        #registro de la solicitud en la bd 
+        solicitud = Solicitudes.objects.create(publicacion = post, solicitante = request.user)
+        solicitud.save()
+        #mensaje de exito
+        messages.success(request, "Su solicitud ha sido enviada con exito!")
 
     return redirect(publicacion, publicacion_id= publicacion_id)
 

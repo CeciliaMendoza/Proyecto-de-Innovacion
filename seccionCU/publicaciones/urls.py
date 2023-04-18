@@ -10,7 +10,7 @@ urlpatterns = [
     path("delete/<int:publicacion_id>", views.delete_publicacion, name="delete"),
     path("post/<int:publicacion_id>", views.publicacion, name="publicacion"),
     path('rate/<int:publicacion_id>/<int:rating>/', views.rate, name="rating"),
-    path("solicitar/<int:publicacion_id>", crear_publicacion.as_view(), name="solicitar"),
+    path("solicitar/<int:publicacion_id>", views.solicitar, name="solicitar"),
 
 ]
 

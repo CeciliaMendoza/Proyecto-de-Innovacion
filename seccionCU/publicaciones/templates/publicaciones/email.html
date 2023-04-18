@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <br>
+        <h2>Estimado {{ post.autor.first_name }} {{ post.autor.last_name }}</h2>
+        <h2>El usuario {{ usuario.first_name }} {{ usuario.last_name }} ha solicitado:</h2>
+        <h3>Detalles:</h3>
+        {{ post.titulo }} </br>
+        {{ post.descripcion }} <br/>
+        {{ post.precio }} <br/>
+        {{ post.categoria }}
+        <h3>
+            Contact Details:
+        </h3>
+        Email: {{ usuario.email }} <br/>
+        Phone: {{ usuario.phone }}
+    </body>
+</html>
