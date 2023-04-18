@@ -1,0 +1,62 @@
+{% extends 'publicaciones/nav.html' %}
+
+{% load static %}
+
+{%block content%}
+
+
+<style>
+    img{
+        width: 20%;
+    }
+
+    a{
+        text-decoration: none!important;
+
+    }
+</style>
+    
+    <h2>Mis solicitudes</h2> solicitudes que ha hecho el propio usu a otros usus
+    <h2>Pedidos</h2> pedidos que le han hecho los otros usus
+
+    
+    <div class="publicaciones-1">
+        
+        {%for publicacion in publicaciones%}
+        <a href="{%url 'publicacion' publicacion.id%}">
+
+        <div class="card mb-4 sombreado">
+            <div class="row g-0">
+              {% if publicacion.imagen %}
+                <div class="col-md-4">
+                    <img class="img-publi" src="{{publicacion.imagen.url}}" class="card-img-top">
+                </div>
+              {% endif %}
+
+              <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
+                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
+        
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
+
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        </a>
+        {%endfor%}
+
+    </div>
+    
+<!--</div>-->
+
+
+
+
+
+{% include "publicaciones/paginacion_publicaciones.html" with page_obj=publicaciones  %}
+
+{%endblock%}

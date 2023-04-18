@@ -149,3 +149,21 @@ def solicitar(request, publicacion_id):
     return redirect(publicacion, publicacion_id= publicacion_id)
 
 
+@login_required
+def historial(request):
+    categorias = Categoria.objects.all()
+    usuario = User.objects.get(id=request.user.id)
+    queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario)
+    print(queryset)
+    solicitudes = []
+
+    for solicitud in queryset:
+        solicitudes.append({'id': solicitud.publicacion.id,
+                            'imagen': solicitud.publicacion.imagen, 
+                            'titulo': solicitud.publicacion.titulo, 
+                            'descripcion': solicitud.publicacion.descripcion,
+                            'precio': solicitud.publicacion.precio,
+                            'autor': solicitud.publicacion.autor,
+                            'categoria': solicitud.publicacion.categoria,})
+        
+    return render(request, "publicaciones/historial_mis_solicitudes.html", {"publicaciones" : solicitudes, "categorias" : categorias})
