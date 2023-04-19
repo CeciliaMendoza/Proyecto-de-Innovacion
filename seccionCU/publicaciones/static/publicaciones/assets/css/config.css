@@ -51,6 +51,12 @@ input[type="file"]{
     border-color: 1px solid red;
 }
 
+.btn-green{
+    color: white;
+    background-color: #36da0d;
+    border-color: 1px solid #36da0d;
+}
+
 .btn-rosa{
     color: white;
     background-color: #FF9494;

@@ -24,6 +24,7 @@
     <link href="{% static 'publicaciones/assets/css/config.css' %}" rel="stylesheet">
     <link href="{% static 'publicaciones/assets/css/login-Registro.css' %}" rel="stylesheet">
     <link href="{% static 'publicaciones/assets/css/dark-mode.css' %}" rel="stylesheet">
+    <link href="{% static 'publicaciones/assets/css/crear_publicacion.css' %}" rel="stylesheet">
     
     
     <!-- sub nav -->
@@ -63,17 +64,14 @@
       margin: 0;
     }
 
-    /* Add a red background color to navigation links on hover */
-    .navbar a:hover, .subnav:hover .subnavbtn {
-      background-color: black;
-    }
+    
 
     /* Style the subnav content - positioned absolute */
     .subnav-content {
       display: none;
       position: absolute;
       left: 0;
-      background-color: gray;
+      background-color: #FF9494;
       width: 100%;
       z-index: 1;
     }
@@ -85,11 +83,7 @@
       text-decoration: none;
     }
 
-    /* Add a grey background color on hover */
-    .subnav-content a:hover {
-      background-color: #eee;
-      color: black;
-    }
+    
 
     /* When you move the mouse over the subnav container, open the subnav content */
     .subnav:hover .subnav-content {

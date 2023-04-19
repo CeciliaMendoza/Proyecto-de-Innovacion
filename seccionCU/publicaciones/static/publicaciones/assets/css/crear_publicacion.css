@@ -1,0 +1,23 @@
+.h1-crear-p{
+    text-align: center;
+}
+
+.form-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-content input[type="text"], input[type="number"]{
+    width: 46rem;
+}
+
+.form-content input[type="checkbox"]{
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari y Chrome */
+    -o-transform: scale(2); /* Opera */
+   
+    margin: 0 .5rem;
+
+}

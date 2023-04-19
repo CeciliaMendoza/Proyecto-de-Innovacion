@@ -10,6 +10,10 @@
     width: 25rem;
 }
 
+.cont-perfil-img{
+    margin-left: 5rem;
+}
+
 .apartados-perfil{
     display: flex;
     flex-direction: column;

@@ -59,6 +59,17 @@
     border-color: #1E2022;
 }
 
+.dark-mode .subnav .subnav-content{
+	background-color: #1E2022;
+}
+
+.dark-mode .navbar a:hover{
+    background-color: #1E2022;
+}
+
+.dark-mode .subnav:hover .subnavbtn {
+  background-color: #1E2022;
+}
 
 
 

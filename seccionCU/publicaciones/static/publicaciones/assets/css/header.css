@@ -1,4 +1,11 @@
+.nav-item:hover{
+	background-color: #FF9494;
+}
 
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+	background-color: #FF9494;
+}
 
 .logo{
     display: flex;
