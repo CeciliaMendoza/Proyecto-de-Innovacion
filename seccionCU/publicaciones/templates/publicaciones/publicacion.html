@@ -92,9 +92,12 @@
         <h5>
             Esta publicacion ha sido valorada por {{valoraciones_count}} usuarios
         </h5>
-        <a href="{% url 'solicitar' publicacion.id%}">
-            <button class="btn btn-primary" >Solicitar</button>
-        </a>
+
+        {%if request.user.id != publicacion.autor.id %}
+            <a href="{% url 'solicitar' publicacion.id%}">
+                <button class="btn btn-primary" >Solicitar</button>
+            </a>
+        {%endif%}   
     </div>
 
 </div>

@@ -8,41 +8,51 @@ from django.core.validators import RegexValidator
 import re 
 
 class CustomUserCreationForm(forms.ModelForm):
-    email =  forms.EmailField(
-        validators=[
-            RegexValidator(
-                "@alumnos\.uacj\.mx$",
-                message="Debe utilizar un correo institucional"
-            )
-        ],
-        label="Correo electronico"
-    )
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput, min_length=8)
+    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput, min_length=8)
 
     class Meta:
         model = User
-        fields = ('username','first_name','last_name', 'career')
+        fields = ('username','first_name','last_name', 'career', 'email')
         labels = {
             'username': _('Nombre de usuario'),
             'first_name': _('Nombre'),
             'last_name': _('Apellido'),
             'career': _('Carrera'),
+
         }
 
-    def email_clean(self):  
-        email = self.cleaned_data.get("email")
-        print(email)
+    def clean_email(self):  
+        email = self.cleaned_data['email'].lower()  
         new = User.objects.filter(email=email)  
+        regex = r"@alumnos\.uacj\.mx$"
+
         if new.count():  
-            raise forms.ValidationError("Este correo ya esta registrado")  
-        return email
-       
+            raise forms.ValidationError("Este email ya esta registrado")
+        matches = re.search(regex, email)
+        if not matches:
+            print(matches)
+            print("no matches")
+            raise forms.ValidationError("Debe ser un correo institucional")
+        
+        return email  
+    def clean_password1(self):
+                
+        password1 = self.cleaned_data.get("password1")
+        if not re.findall('[A-Z]', password1):
+            raise forms.ValidationError("La contraseña debe tener al menos una letra mayuscula, A-Z.")
+        if not re.findall('[0-9]', password1):
+            raise forms.ValidationError("La contraseña debe tener al menos un digito, 0-9.")
+        if len(password1) < 8:
+            raise forms.ValidationError("La contraseña debe contener al menos 8 caracteres.")
+        return password1
+    
     def clean_password2(self):
+        # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Las contraseñas no coinciden")
+            raise forms.ValidationError("Passwords don't match")
         return password2
 
     def save(self, commit=True):
@@ -51,8 +61,7 @@ class CustomUserCreationForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
-        return user
-    
+        return user        
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(CustomAuthenticationForm, self).__init__(*args, **kwargs)

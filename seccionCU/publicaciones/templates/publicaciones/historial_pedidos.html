@@ -37,15 +37,14 @@
                     <img class="img-publi" src="{{soli.publicacion.imagen.url}}" class="card-img-top">
                 </div>
               {% endif %}
-
               <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{soli.publicacion.titulo}}</h5>
-                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{soli.publicacion.descripcion }}</p>
+                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{soli.publicacion.titulo}}</h5>    
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{soli.publicacion.precio}}</p>
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{soli.publicacion.autor}}</p>
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{soli.publicacion.categoria}}</p>
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Solicitante:</span> {{soli.solicitante.first_name}} {{soli.solicitante.last_name}} </p>
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Fecha:</span> {{soli.created}}</p>
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{soli.publicacion.categoria}}</p>
+
                 </div>
               </div>
             </div>
@@ -54,12 +53,6 @@
         {%endfor%}
 
     </div>
-    
-<!--</div>-->
-
-
-
-
 
 {% include "publicaciones/paginacion_publicaciones.html" with page_obj=publicaciones  %}
 

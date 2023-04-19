@@ -33,12 +33,14 @@
             <img class="img-perfil" src="{% static 'autentificacion/img/gato.jpg' %}">
         {%endif%}
     
+
+        {%if request.user.id == usuario.id%}
         <div class="apartados-perfil">
-            <a href="#"> Historia de solicitudes</a>
+            <a href="{%url 'solicitudes'%}"> Historial</a>
             <a href="{%url 'create'%}"> Crear publicacion</a>
             <a href="{%url 'configuracion'%}"> Configuracion</a>  
         </div>
-    
+        {%endif%}
     </div>
     
     <div class="cont-datosPerfil">

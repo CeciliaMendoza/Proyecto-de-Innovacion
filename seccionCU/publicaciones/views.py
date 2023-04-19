@@ -108,9 +108,9 @@ def publicacion(request, publicacion_id):
     categorias = Categoria.objects.all()
     publicacion = Publicaciones.objects.get(id=publicacion_id)
     autor = User.objects.get(id = publicacion.autor.id)
-
     valoraciones_count = Puntuacion.objects.filter(publicacion=publicacion).count()
     return render(request, "publicaciones/publicacion.html", {"categorias":categorias, "publicacion": publicacion, "autor" : autor, "valoraciones_count" : valoraciones_count})
+
 @login_required
 def rate(request, publicacion_id, rating):
     post = Publicaciones.objects.get(id=publicacion_id)
@@ -154,16 +154,16 @@ def historial(request):
     categorias = Categoria.objects.all()
     usuario = User.objects.get(id=request.user.id)
     queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario)
-    print(queryset)
-    solicitudes = []
-
-    for solicitud in queryset:
-        solicitudes.append({'id': solicitud.publicacion.id,
-                            'imagen': solicitud.publicacion.imagen, 
-                            'titulo': solicitud.publicacion.titulo, 
-                            'descripcion': solicitud.publicacion.descripcion,
-                            'precio': solicitud.publicacion.precio,
-                            'autor': solicitud.publicacion.autor,
-                            'categoria': solicitud.publicacion.categoria,})
         
-    return render(request, "publicaciones/historial_mis_solicitudes.html", {"publicaciones" : solicitudes, "categorias" : categorias})
+    return render(request, "publicaciones/historial_mis_solicitudes.html", {"solicitudes" : queryset, "categorias" : categorias})
+
+
+@login_required
+def historial_pedidos(request):
+    categorias = Categoria.objects.all()
+    usuario = User.objects.get(id=request.user.id)
+    queryset = Solicitudes.objects.select_related('publicacion').filter(publicacion__autor = usuario)
+    print(queryset)
+    for q in queryset:
+        print(q.solicitante.first_name)
+    return render(request, "publicaciones/historial_pedidos.html", {"solicitudes" : queryset, "categorias" : categorias})
