@@ -8,19 +8,27 @@ from django.core.validators import RegexValidator
 import re 
 
 class CustomUserCreationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs['placeholder'] = visible.field.label
+
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput, min_length=8)
     password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput, min_length=8)
 
     class Meta:
         model = User
         fields = ('username','first_name','last_name', 'career', 'email')
+
         labels = {
             'username': _('Nombre de usuario'),
             'first_name': _('Nombre'),
             'last_name': _('Apellido'),
             'career': _('Carrera'),
-
+            'email' : _("Correo electronico"),
         }
+
 
     def clean_email(self):  
         email = self.cleaned_data['email'].lower()  
@@ -65,12 +73,19 @@ class CustomUserCreationForm(forms.ModelForm):
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(CustomAuthenticationForm, self).__init__(*args, **kwargs)
-
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs['placeholder'] = visible.field.label
     username = forms.EmailField(label='Email')
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)  
 
 
 class Update_user(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs['placeholder'] = visible.field.label
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name','career', 'birthdate', 'address','phone', "photo"]
