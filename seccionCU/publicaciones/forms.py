@@ -6,10 +6,10 @@ from django.utils.translation import gettext_lazy as _
 class Crear_publicacion_form(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['estado'].widget.attrs['placeholder'] = 'Write product title here'
+        visible.field.widget.attrs['checked'] = "checked"
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
-            visible.field.widget.attrs['checked'] = "checked"
+            visible.field.widget.attrs['placeholder'] = visible.field.label
 
     class Meta:
         model = Publicaciones
