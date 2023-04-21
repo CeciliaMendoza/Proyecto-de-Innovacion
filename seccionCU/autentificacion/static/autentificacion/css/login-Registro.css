@@ -1,14 +1,13 @@
 .body-login{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    background-image: url(../img/bg3.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
-.body-login img{
-    display: block;
-    width: 100%;
-    height: -webkit-fill-available;
-
-    object-fit: cover;
+.body-registro{
+    background-image: url(../img/bg2.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 .div-login-mitad section{
@@ -16,6 +15,9 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    width: 30rem;
+
+    opacity: 95%;
 }
 
 .section-login{
@@ -24,4 +26,422 @@
 
 .form-register{
     margin: 0 2rem;
+}
+
+@media (max-width: 321px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .section-login input[type="text"]{
+        height: calc(1.5rem + 2px);
+    }
+
+    .form-group{
+        margin-bottom: 0rem;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 16rem;
+        height: 22.5rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+
+    .body-registro .div-login-mitad section{
+        height: 24rem !important;
+    }
+}
+
+@media (min-width:322px) and (max-width: 376px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 0rem;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 18rem;
+        height: 25rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width:377px) and (max-width: 415px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 0rem;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 20rem;
+        height: 30rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+
+    .body-registro .div-login-mitad section{
+        width: 24rem;
+        height: 34rem !important;
+    }
+}
+
+@media (min-width:415px) and (max-width: 500px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 0rem;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 25rem;
+        height: 36rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+
+    .body-registro .div-login-mitad section{
+        height: 40rem !important;
+    }
+}
+
+@media (min-width:501px) and (max-width: 601px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 0rem;
+    }
+
+    .form-group:last-of-type{
+        margin-top: 1rem;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 30rem;
+        height: 40rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+
+    .body-registro .div-login-mitad section{
+        width: 33rem;
+        height: 45rem !important;
+    }
+}
+
+@media (min-width:601px) and (max-width: 680px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 0rem;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 34rem;
+        height: 45rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width:681px) and (max-width: 768px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 40rem;
+        height: 50rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width:769px) and (max-width: 850px){
+    .div-login-mitad {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 95%;
+    }
+
+    .div-login label, p{
+        font-size: 1rem;
+    }
+
+    .div-login h2{
+        font-size: 1.5rem;
+    }
+
+    .div-login input[type="email"], input[type="password"]{
+        font-size: 1rem;
+    }
+
+    .pb-5, .py-5{
+        padding-bottom: 0rem !important;
+    }
+
+    .mb-5, .my-5{
+        margin-bottom: 0rem !important;
+    }
+
+    .div-login-mitad section{
+        width: 44rem;
+        height: 55rem !important;
+
+        border-radius: 1rem;
+
+    }
+
+    .section-login{
+        background-color: #FFE3E1;
+    }
+
+    .section-login button{
+        margin-top: 1rem;
+    }
 }

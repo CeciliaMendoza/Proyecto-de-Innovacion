@@ -4,6 +4,12 @@
     margin-right: 1rem;
 }
 
+.dark-mode .sombreado{
+   box-shadow: 9px 10px 12px 3px rgba(219, 219, 219, 0.75);
+    -webkit-box-shadow: 9px 10px 12px 3px rgba(219, 219, 219, 0.75);
+    -moz-box-shadow: 9px 10px 12px 3px rgba(219, 219, 219, 0.75);
+}
+
 .dark-mode-button:hover{
     cursor: pointer;
 }
