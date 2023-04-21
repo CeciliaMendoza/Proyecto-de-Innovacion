@@ -25,3 +25,14 @@
 .form-register{
     margin: 0 2rem;
 }
+
+@media(max-width: 321px){
+    .body-login{
+        display: none;
+        background-image: url('/seccionCU/autentificacion/static/autentificacion/img/bg3.jpg');
+    }
+
+    .section-login{
+        background-color: #911a11;
+    }
+}
