@@ -41,6 +41,11 @@ class Publicaciones(models.Model):
     def average_rating(self):
         return Puntuacion.objects.filter(publicacion=self).aggregate(Avg("valoracion"))["valoracion__avg"] or 0
 
+    def is_estado(self):
+        if self.estado:
+            return "Disponible"
+        return "No disponible"
+
 class Solicitudes(models.Model):
     publicacion = models.ForeignKey(Publicaciones, on_delete=models.CASCADE)
     solicitante = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -32,11 +32,13 @@
 
         <div class="card mb-4 sombreado">
             <div class="row g-0">
-              {% if soli.publicacion.imagen %}
                 <div class="col-md-4">
-                    <img class="img-publi" src="{{soli.publicacion.imagen.url}}" class="card-img-top">
+                    {% if soli.publicacion.imagen %}
+                        <img class="img-publi" src="{{soli.publicacion.imagen.url}}" class="card-img-top">
+                    {%else%}
+                        <img class="img-publi" src="{% static 'publicaciones/img/sin_imagen.png' %}"class="card-img-top">
+                    {% endif %}
                 </div>
-              {% endif %}
 
               <div class="col-md-8">
                 <div class="card-body">
@@ -61,6 +63,6 @@
 
 
 
-{% include "publicaciones/paginacion_publicaciones.html" with page_obj=publicaciones  %}
+{% include "publicaciones/paginacion_publicaciones.html" with page_obj=solicitudes  %}
 
 {%endblock%}

@@ -32,19 +32,24 @@
 
         <div class="card mb-4 sombreado">
             <div class="row g-0">
-              {% if soli.publicacion.imagen %}
+              
                 <div class="col-md-4">
-                    <img class="img-publi" src="{{soli.publicacion.imagen.url}}" class="card-img-top">
+                    {% if soli.publicacion.imagen %}
+                        <img class="img-publi" src="{{soli.publicacion.imagen.url}}" class="card-img-top">
+                    {%else%}
+                        <img class="img-publi" src="{% static 'publicaciones/img/sin_imagen.png' %}"class="card-img-top">
+                    {% endif %}
                 </div>
-              {% endif %}
+              
+
               <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{soli.publicacion.titulo}}</h5>    
+                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{soli.publicacion.titulo}}</h5>
+                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{soli.publicacion.descripcion }}</p>
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{soli.publicacion.precio}}</p>
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Solicitante:</span> {{soli.solicitante.first_name}} {{soli.solicitante.last_name}} </p>
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Fecha:</span> {{soli.created}}</p>
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{soli.publicacion.autor}}</p>
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{soli.publicacion.categoria}}</p>
-
+                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Fecha:</span> {{soli.created}}</p>
                 </div>
               </div>
             </div>
@@ -54,6 +59,6 @@
 
     </div>
 
-{% include "publicaciones/paginacion_publicaciones.html" with page_obj=publicaciones  %}
+{% include "publicaciones/paginacion_publicaciones.html" with page_obj=solicitudes  %}
 
 {%endblock%}

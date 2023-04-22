@@ -18,7 +18,7 @@ User = get_user_model()
 
 @login_required
 def principal(request):
-    publicaciones_all = Publicaciones.objects.all().order_by("-created")
+    publicaciones_all = Publicaciones.objects.filter(estado = True).order_by("-created")
     categorias = Categoria.objects.all()
     # Show 5 contacts per page.
     paginator = Paginator(publicaciones_all, 6) 
@@ -33,7 +33,7 @@ def categoria(request, categoria_id):
     categorias = Categoria.objects.all()
     #categoria seleccionada
     categoria = Categoria.objects.get(id=categoria_id)
-    publicaciones_all = Publicaciones.objects.filter(categoria=categoria).order_by("-created")
+    publicaciones_all = Publicaciones.objects.filter(categoria=categoria, estado = True).order_by("-created")
     # Show 5 contacts per page.
     paginator = Paginator(publicaciones_all, 6) 
     #obtiene el numeor de pagina 
@@ -49,7 +49,7 @@ def busquedas(request):
         #busqueda
         query = request.GET.get('busqueda')
         #buscar sobre el campo titulo
-        publicaciones_all= Publicaciones.objects.filter(titulo__contains=query).order_by("-created")
+        publicaciones_all= Publicaciones.objects.filter(titulo__contains=query, estado = True).order_by("-created")
         # Show 5 contacts per page.
         paginator = Paginator(publicaciones_all, 6) 
         #obtiene el numeor de pagina 
@@ -154,7 +154,11 @@ def historial(request):
     categorias = Categoria.objects.all()
     usuario = User.objects.get(id=request.user.id)
     queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario)
-        
+    # Show 10 
+    paginator = Paginator(queryset, 10) 
+    #obtiene el numeor de pagina 
+    page_number = request.GET.get('page')
+    queryset = paginator.get_page(page_number)       
     return render(request, "publicaciones/historial_mis_solicitudes.html", {"solicitudes" : queryset, "categorias" : categorias})
 
 
@@ -163,7 +167,9 @@ def historial_pedidos(request):
     categorias = Categoria.objects.all()
     usuario = User.objects.get(id=request.user.id)
     queryset = Solicitudes.objects.select_related('publicacion').filter(publicacion__autor = usuario)
-    print(queryset)
-    for q in queryset:
-        print(q.solicitante.first_name)
+    # Show 10
+    paginator = Paginator(queryset, 10) 
+    #obtiene el numeor de pagina 
+    page_number = request.GET.get('page')
+    queryset = paginator.get_page(page_number)  
     return render(request, "publicaciones/historial_pedidos.html", {"solicitudes" : queryset, "categorias" : categorias})

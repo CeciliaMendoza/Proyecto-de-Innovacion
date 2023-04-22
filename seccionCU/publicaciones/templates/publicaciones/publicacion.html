@@ -44,6 +44,8 @@
 
         {% if publicacion.imagen %}
             <img class="img-perfil" src="{{publicacion.imagen.url}}" >
+        {% else %}
+            <img class="img-perfil" src="{% static 'publicaciones/img/sin_imagen.png' %}">
         {%endif%}
     </div>
     

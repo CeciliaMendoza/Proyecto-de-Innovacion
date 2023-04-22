@@ -73,17 +73,23 @@
         <div class="card mb-4 sombreado">
             <a href="{%url 'publicacion' publicacion.id%}">
                 <div class="row g-0">
-                {% if publicacion.imagen %}
                     <div class="col-md-perfil">
+                        {% if publicacion.imagen %}
                         <img class="img-publi" src="{{publicacion.imagen.url}}" class="card-img-top">
+                        {%else%}
+                        <img class="img-publi" src="{% static 'publicaciones/img/sin_imagen.png' %}"class="card-img-top">
+                        {% endif %}
                     </div>
-                {% endif %}
 
                     <div class="col-md-perfil2">
                         <div class="card-body">
                             <h5 class="card-title"><span class="span-card"></span> {{publicacion.titulo}}</h5>
                             <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
                             <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                            {%if request.user.id == usuario.id%}
+                            <p class="card-subtitle mb-2 text-muted"><span class="span-card">Estado:</span> {{publicacion.is_estado}}</p>
+
+                            {%endif%}
                             <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
                         </div>
                     </div>
