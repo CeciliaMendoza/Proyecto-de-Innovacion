@@ -49,3 +49,35 @@
 
     text-align: center;
 }
+
+@media (max-width: 321px){
+    
+}
+
+@media (min-width:322px) and (max-width: 376px){
+    
+}
+
+@media (min-width:377px) and (max-width: 415px){
+    
+}
+
+@media (min-width:415px) and (max-width: 500px){
+    
+}
+
+@media (min-width:501px) and (max-width: 601px){
+    
+}
+
+@media (min-width:601px) and (max-width: 680px){
+    
+}
+
+@media (min-width:681px) and (max-width: 768px){
+    
+}
+
+@media (min-width:769px) and (max-width: 850px){
+    
+}
