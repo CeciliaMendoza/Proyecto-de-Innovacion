@@ -26,20 +26,10 @@
 <div class="contenido_perfil">
 
     <div class="cont-perfil-img">
-
         {% if usuario.photo %}
             <img class="img-perfil" src="{{usuario.photo.url}}" >
         {%else%}
             <img class="img-perfil" src="{% static 'autentificacion/img/gato.jpg' %}">
-        {%endif%}
-    
-
-        {%if request.user.id == usuario.id%}
-        <div class="apartados-perfil">
-            <a href="{%url 'solicitudes'%}"> Historial</a>
-            <a href="{%url 'create'%}"> Crear publicacion</a>
-            <a href="{%url 'configuracion'%}"> Configuracion</a>  
-        </div>
         {%endif%}
     </div>
     
@@ -50,22 +40,24 @@
             {{ usuario.username }}
         </h2>
         <h2>
-            <span>Nombre: </span>
-            {{ usuario.first_name }}
-        </h2>
-        <h2>
-            <span>Apellido: </span>
-            {{ usuario.last_name }}
-        </h2>
-        <h2>
-            <span>Carrera: </span>
-            {{ usuario.career }}
+            <span>Nombre Completo: </span>
+            {{ usuario.first_name }} {{ usuario.last_name }}
         </h2>
         <h2>
             <span>Teléfono: </span>
             {{ usuario.phone }}
         </h2>
     
+    </div>
+
+    <div class="cont-opciones-perfil">
+        {%if request.user.id == usuario.id%}
+        <div class="apartados-perfil">
+            <a href="{%url 'solicitudes'%}"> Historial</a>
+            <a href="{%url 'create'%}"> Crear publicacion</a>
+            <a href="{%url 'configuracion'%}"> Configuracion</a>  
+        </div>
+        {%endif%}
     </div>
 
 </div>
@@ -82,20 +74,17 @@
             <a href="{%url 'publicacion' publicacion.id%}">
                 <div class="row g-0">
                 {% if publicacion.imagen %}
-                    <div class="col-md-4">
+                    <div class="col-md-perfil">
                         <img class="img-publi" src="{{publicacion.imagen.url}}" class="card-img-top">
                     </div>
                 {% endif %}
 
-                    <div class="col-md-8">
+                    <div class="col-md-perfil2">
                         <div class="card-body">
-                            <h5 class="card-title"><span class="span-card">Titulo:</span> {{publicacion.titulo}}</h5>
-                            <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
-                
+                            <h5 class="card-title"><span class="span-card"></span> {{publicacion.titulo}}</h5>
                             <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{publicacion.precio}}</p>
-            
-                            <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{publicacion.autor}}</p>
                             <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{publicacion.categoria}}</p>
+                            <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{publicacion.descripcion }}</p>
                         </div>
                     </div>
                 </div>

@@ -5,9 +5,26 @@
     margin: 2rem;
 }
 
+.col-md-perfil{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-md-perfil2 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    /* max-width: 66.666667%; */
+}
+
+.cont-opciones-perfil{
+    margin-left: 5rem;
+}
+
 .img-perfil{
-    height: 25rem;
-    width: 25rem;
+    height: 100%;
+    width: 100%;
 }
 
 .cont-perfil-img{
@@ -50,34 +67,127 @@
     text-align: center;
 }
 
+@media (max-width: 1023px){
+    .contenido_perfil{
+        display: flex;
+        flex-direction: column;
+    
+        margin: 2rem;
+    }
+
+    .cont-perfil-img{
+        display: flex;
+        justify-content: center;
+        margin-left: 0rem;
+    }
+
+    .cont-opciones-perfil{
+        margin-left: 0rem;
+    }
+
+    .apartados-perfil {
+        margin-top: 0rem;
+    }
+}
+
 @media (max-width: 321px){
+
+    .cont-datosPerfil h2{
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.3rem;
+    }
+
     
 }
 
-@media (min-width:322px) and (max-width: 376px){
+@media (min-width: 322px) and (max-width: 374px){
     
+    .cont-datosPerfil h2{
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.3rem;
+    }
+
 }
 
-@media (min-width:377px) and (max-width: 415px){
+@media (min-width: 375px) and (max-width: 413px){
     
+    .cont-datosPerfil h2{
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.5rem;
+    }
+
 }
 
-@media (min-width:415px) and (max-width: 500px){
+@media (min-width: 414px) and (max-width: 500px){
     
+    .cont-datosPerfil h2{
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.5rem;
+    }
+
 }
 
-@media (min-width:501px) and (max-width: 601px){
+@media (min-width: 501px) and (max-width: 599px){
     
+    .cont-datosPerfil h2{
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.5rem;
+    }
+
 }
 
-@media (min-width:601px) and (max-width: 680px){
-    
+@media (min-width: 600px) and (max-width: 680px){
+    .cont-datosPerfil h2{
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.5rem;
+    }
+
 }
 
-@media (min-width:681px) and (max-width: 768px){
-    
+@media (min-width: 681px) and (max-width: 850px){
+    .cont-datosPerfil h2{
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.5rem;
+    }
 }
 
-@media (min-width:769px) and (max-width: 850px){
-    
+@media (min-width: 851px) and (max-width: 1023px){
+    .cont-datosPerfil h2{
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .apartados-perfil a{
+        font-size: 1.5rem;
+    }
 }
+
+
