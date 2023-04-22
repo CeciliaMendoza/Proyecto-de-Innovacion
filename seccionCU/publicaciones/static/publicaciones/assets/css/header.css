@@ -7,6 +7,61 @@
 	background-color: #FF9494;
 }
 
+@media (min-width: 900px){
+	.navbar-expand-menu {
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+
+	.navbar-expand-menu .navbar-collapse {
+		display: -ms-flexbox!important;
+		display: flex!important;
+		-ms-flex-preferred-size: auto;
+		flex-basis: auto;
+	}
+
+	.navbar-expand-menu .navbar-toggler {
+		display: none;
+	}
+
+	.navbar-expand-menu .navbar-nav {
+		-ms-flex-direction: row;
+		flex-direction: row;
+	}
+}
+
+@media (max-width: 321px){
+    .navbar .logo{
+		font-size: 1.4rem !important;
+	}
+}
+
+@media (min-width:322px) and (max-width: 376px){
+    .navbar .logo{
+		font-size: 1.7rem !important;
+	}
+}
+
+@media (min-width:377px) and (max-width: 415px){
+    .navbar .logo{
+		font-size: 2rem !important;
+	}
+}
+
+@media (min-width:415px) and (max-width: 601px){
+    .navbar .logo{
+		font-size: 2.3rem !important;
+	}
+}
+
+@media (min-width:601px){
+    .navbar .logo{
+		font-size: 2.6rem !important;
+	}
+}
+
 .logo{
     display: flex;
     justify-content: center;
