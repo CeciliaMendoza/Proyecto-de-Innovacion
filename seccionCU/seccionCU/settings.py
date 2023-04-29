@@ -1,6 +1,10 @@
 from pathlib import Path
+import environ  
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+env = environ.Env()
+
+environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -8,10 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vao909o=$(18cp^bme^4-0sjnq%l9o_cx+*=%54cq2s+)#o&^('
+SECRET_KEY = env('SECRET_KEY') 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 LOGIN_URL = "login"
@@ -39,6 +42,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'seccionCU.urls'
@@ -109,11 +113,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # <-- Updated!
 STATIC_URL = 'static/'
 MEDIA_URL='seccionCU/media/'
 MEDIA_ROOT=BASE_DIR / 'seccionCU/media'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -122,8 +125,18 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap', 'uni_form', 'bootstrap3', 'foundat
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "seccionCU@gmail.com"
-EMAIL_HOST_PASSWORD = "ekvvcahoduzzqqlb"
+EMAIL_HOST_USER = env('EMAIL') 
+EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'seccionCU.pythonanywhere.com']
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_PRELOAD = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
