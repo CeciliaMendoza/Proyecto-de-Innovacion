@@ -14,9 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY') 
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 LOGIN_URL = "login"
 
 # Application definition
@@ -113,7 +113,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # <-- Updated!
 STATIC_URL = 'static/'
 MEDIA_URL='seccionCU/media/'
 MEDIA_ROOT=BASE_DIR / 'seccionCU/media'
@@ -131,12 +130,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'seccionCU.pythonanywhere.com']
+ALLOWED_HOSTS = ["*"]
 
-SECURE_HSTS_SECONDS = 31536000
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_HSTS_PRELOAD = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 1
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
