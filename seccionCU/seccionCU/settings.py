@@ -1,6 +1,6 @@
 from pathlib import Path
 import environ  
-
+import os
 env = environ.Env()
 
 environ.Env.read_env()
@@ -113,7 +113,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# The URL to use when referring to static files (where they will be served from)
+STATIC_URL = '/static/'
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 MEDIA_URL='seccionCU/media/'
 MEDIA_ROOT=BASE_DIR / 'seccionCU/media'
 
