@@ -40,7 +40,7 @@
     border-color: 1px solid #C9D6DF;
 }
 
-.dark-mode input[type="text"], input[type="date"]{
+.dark-mode input[type="text"], input[type="number"], input[type="date"], .select{
     background-color: #C9D6DF;
     border: none;
     width: 35rem;

@@ -1,39 +1,55 @@
-a{
+/** Este segmento es el que funciona **/
+
+a.rating{
+    text-decoration: none!important;
+    color: black;
+}
+
+.fa-star{
+    font-size: 2rem;
+}
+
+.ranking a:not(:checked), .ranking label:not(:checked) {
+    color: #aaa;
     text-decoration: none;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
 }
-.rating > a {
-    float:left;
-    border:none;
+
+.ranking label:hover ~ label,
+.ranking input:focus ~ label,
+.ranking label:hover, .ranking a:hover,
+.ranking a:hover ~ a, .ranking a:focus,
+.ranking a:focus ~ a		{
+    color: orange;
+    cursor: pointer;
 }
-.rating:not(:checked)  > a > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0, 0, 0, 0);
+
+.ranking {
+    direction: rtl;
 }
-.rating:not(:checked)  > a > label {
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-}
+
+/* Apartir de aquí para abajo es lo que no funciona */
+
 .rating:not(:checked) > a > label:before {
     content:'★ ';
 }
-.rating  > a > input:checked ~ label {
+.ranking  > a > input:checked ~ label {
     color: #f70;
 }
-.rating:not(:checked)  > a > label:hover, .rating:not(:checked) > label:hover ~ label {
+.ranking:not(:checked)  > a > label:hover, .ranking:not(:checked) > label:hover ~ label {
     color: gold;
 }
-.rating  > a > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+.ranking  > a > input:checked + label:hover, .ranking > input:checked + label:hover ~ label, .ranking > input:checked ~ label:hover, .ranking > input:checked ~ label:hover ~ label, .ranking > label:hover ~ input:checked ~ label {
     color: #ea0;
 }
 .rating  > a > label:active {
     position:relative;
 }
+
+
+
+
 

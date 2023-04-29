@@ -27,7 +27,7 @@ class Update_publicacion_form(ModelForm):
             visible.field.widget.attrs['placeholder'] = visible.field.label
     class Meta:
         model = Publicaciones
-        fields = ['titulo', 'descripcion', 'precio','estado', 'categoria', 'imagen']
+        fields = ['titulo', 'descripcion', 'precio', 'categoria','estado', 'imagen']
         exclude = ['autor']
 
         labels = {

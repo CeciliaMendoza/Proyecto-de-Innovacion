@@ -6,32 +6,7 @@
 <link href="{% static 'publicaciones/assets/css/ranking.css' %}" rel="stylesheet">
 
 
-<style>
-    img{
-        width: 20%;
-    }
 
-    a.rating{
-        text-decoration: none!important;
-        color: black;
-    }
-    
-    a.rating:hover{
-      color: white;  
-    }
-
-    .checked {
-        color: orange;
-    }
-
-    .checked:hover {
-        color: white;
-    }
-
-    a{
-        text-decoration: none!important;
-    }
-</style>
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -56,10 +31,6 @@
             {{ publicacion.titulo }}
         </h2>
         <h2>
-            <span>Descripcion: </span>
-            {{ publicacion.descripcion }}
-        </h2>
-        <h2>
             <span>Precio: </span>
             {{ publicacion.precio }}
         </h2>
@@ -74,7 +45,12 @@
             </a>
         </h2>
 
-        <h5 class="card-title">
+        <h2>
+            <span>Descripcion: </span>
+            {{ publicacion.descripcion }}
+        </h2>
+
+        <div class="ranking">
             <a class="rating" href="{%url 'rating' publicacion.id 1%}">
                 <span class="fa fa-star {% if publicacion.average_rating > 0 %}checked {% endif %}" title = "1 Estrella"></span>
             </a>
@@ -90,7 +66,9 @@
             <a class="rating" href="{%url 'rating' publicacion.id 5%}">
                 <span class="fa fa-star {% if publicacion.average_rating > 4 %}checked {% endif %}" title = "5 Estrella"></span>
             </a>
-        </h5>
+        </div>
+
+        
         <h5>
             Esta publicacion ha sido valorada por {{valoraciones_count}} usuarios
         </h5>

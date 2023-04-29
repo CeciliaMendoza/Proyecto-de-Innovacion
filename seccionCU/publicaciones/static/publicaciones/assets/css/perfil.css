@@ -25,10 +25,12 @@
 .img-perfil{
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 .cont-perfil-img{
     margin-left: 5rem;
+    margin-bottom: 2rem;
 }
 
 .apartados-perfil{
@@ -55,6 +57,10 @@
     border-bottom: 3.5px solid #FF9494;
 
     margin-bottom: 2.8rem;
+}
+
+.cont-datosPerfil{
+    margin-left: 2rem;
 }
 
 .cont-datosPerfil span{
@@ -87,6 +93,10 @@
 
     .apartados-perfil {
         margin-top: 0rem;
+    }
+
+    .cont-datosPerfil{
+        margin-left: 0rem;
     }
 }
 
@@ -187,6 +197,16 @@
 
     .apartados-perfil a{
         font-size: 1.5rem;
+    }
+
+    .cont-perfil-img{
+        margin-left: 0.5rem;
+    }
+}
+
+@media (min-width: 1024px){
+    .cont-perfil-img{
+        margin-left: 0.5rem;
     }
 }
 

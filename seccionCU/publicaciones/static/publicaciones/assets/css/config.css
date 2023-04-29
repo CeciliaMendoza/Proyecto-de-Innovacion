@@ -3,10 +3,6 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-input[type="text"], input[type="date"], input[type="file"]{
-    border: none;
-    width: 35rem;
-}
 
 input[type="file"]{
     background-color: transparent;
@@ -88,7 +84,10 @@ input[type="file"]{
 }
 
 @media (min-width:377px) and (max-width: 415px){
-    
+    input[type="text"], input[type="date"], input[type="file"]{
+        border: none;
+        width: 100%;
+    }
 }
 
 @media (min-width:415px) and (max-width: 500px){
