@@ -143,7 +143,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'seccionCU.pythonanywhere.com']
 
 SECURE_HSTS_SECONDS = 1
 
