@@ -40,10 +40,8 @@
     border-color: 1px solid #C9D6DF;
 }
 
-.dark-mode input[type="text"], input[type="number"], input[type="date"], .select{
+.dark-mode input[type="text"],.dark-mode input[type="number"],.dark-mode input[type="date"],.dark-mode .select{
     background-color: #C9D6DF;
-    border: none;
-    width: 35rem;
 }
 
 .dark-mode h1{

@@ -64,7 +64,7 @@
 
 @media (min-width: 0px){
 
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"],.form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 100%;
     }
 
@@ -75,9 +75,11 @@
 }
 
 
+
+
 @media (max-width: 460px){
 
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"],.form-content input[type="date"], .form-content input[type="file"], .form-content .select{
         width: 95%;
     }
 
@@ -89,46 +91,66 @@
 
 @media (min-width: 501px) and (max-width: 599px){
     
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 30rem;
     }
 }
 
 @media (min-width: 600px) and (max-width: 680px){
     
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 35rem;
     }
 
 }
 
 @media (min-width: 681px) and (max-width: 850px){
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 46rem;
     }
 }
 
 @media (min-width: 851px) and (max-width: 1023px){
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 50rem;
     }
 }
 
 @media (min-width: 1024px){
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 54rem;
+    }
+
+    .form-config input[type="text"], .form-config input[type="number"], .form-config input[type="file"], .form-config input[type="date"], .form-config .select{
+        margin-right: 2rem;
+        width: 30rem;
+    }
+
+    .form-config .img-perfil{
+        width: 25rem;
+        height: 25rem;
     }
 }
 
 @media (min-width: 1280px){
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 60rem;
+    }
+
+    .form-config input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content input[type="date"], .form-content .select{
+        margin-right: 2rem;
+        width: 40rem;
     }
 }
 
 @media (min-width: 1440px){
-    .form-content input[type="text"], input[type="number"], input[type="file"], .select{
+    .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 70rem;
+    }
+
+    .form-config input[type="text"], .form-config input[type="number"], .form-config input[type="file"], .form-config input[type="date"], .form-config .select{
+        margin-right: 2rem;
+        width: 45rem;
     }
 }
 

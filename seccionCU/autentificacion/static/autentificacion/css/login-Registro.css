@@ -400,7 +400,7 @@
     }
 }
 
-@media (min-width:769px) and (max-width: 850px){
+@media (min-width:769px) and (max-width: 920px){
     .div-login-mitad {
         height: 100%;
         display: flex;
