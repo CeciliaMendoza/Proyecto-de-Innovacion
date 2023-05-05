@@ -6,11 +6,11 @@
 
 
     <h2>
-        <a href="{%url 'historial' 1%}"> Mis solicitudes</a>
+        <a href="{%url 'historial' 1%}" class="titulo {% if '/historial/1' in request.path %} active {% endif %}"> Mis solicitudes</a>
     </h2>
     
     <h2>
-        <a href="{%url 'historial' 2%}"> Pedidos</a>
+        <a href="{%url 'historial' 2%}" class="titulo {% if '/historial/2' in request.path %} active {% endif %}"> Pedidos</a>
     </h2>
 
     
