@@ -11,8 +11,6 @@ urlpatterns = [
     path("post/<int:publicacion_id>", views.publicacion, name="publicacion"),
     path('rate/<int:publicacion_id>/<int:rating>/', views.rate, name="rating"),
     path("solicitar/<int:publicacion_id>", views.solicitar, name="solicitar"),
-    path("historial/solicitudes", views.historial, name="solicitudes"),
-    path("historial/pedidos", views.historial_pedidos, name="pedidos"),
-
+    path("historial/<int:tipo>", views.historial_general, name="historial"),
 ]
 

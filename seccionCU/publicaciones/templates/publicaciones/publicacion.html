@@ -3,10 +3,7 @@
 {% load static %}
 
 {%block content%}
-<link href="{% static 'publicaciones/assets/css/ranking.css' %}" rel="stylesheet">
 <link href="{% static 'publicaciones/assets/css/ranking2.css' %}" rel="stylesheet">
-
-
 
 {% if messages %}
 <ul class="messages">
@@ -53,11 +50,11 @@
 
         <div class="star-wrapper">
             <span class="valoraciones_count">({{valoraciones_count}})</span>
-            <a href="{%url 'rating' publicacion.id 5%}" class="fas fa-star s5 {% if publicacion.average_rating > 4 %}checked {% endif %}"></a>
-            <a href="{%url 'rating' publicacion.id 4%}" class="fas fa-star s4 {% if publicacion.average_rating > 3 %}checked {% endif %}"></a>
-            <a href="{%url 'rating' publicacion.id 3%}" class="fas fa-star s3 {% if publicacion.average_rating > 2 %}checked {% endif %}"></a>
-            <a href="{%url 'rating' publicacion.id 2%}" class="fas fa-star s2 {% if publicacion.average_rating > 1 %}checked {% endif %}"></a>
-            <a href="{%url 'rating' publicacion.id 1%}" class="fas fa-star s1 {% if publicacion.average_rating > 0 %}checked {% endif %}"></a>
+            <a href="{%url 'rating' publicacion.id 5%}" class="fas fa-star s5 {% if publicacion.average_rating > 4 %}checked{% endif %}"></a>
+            <a href="{%url 'rating' publicacion.id 4%}" class="fas fa-star s4 {% if publicacion.average_rating > 3 %}checked{% endif %}"></a>
+            <a href="{%url 'rating' publicacion.id 3%}" class="fas fa-star s3 {% if publicacion.average_rating > 2 %}checked{% endif %}"></a>
+            <a href="{%url 'rating' publicacion.id 2%}" class="fas fa-star s2 {% if publicacion.average_rating > 1 %}checked{% endif %}"></a>
+            <a href="{%url 'rating' publicacion.id 1%}" class="fas fa-star s1 {% if publicacion.average_rating > 0 %}checked{% endif %}"></a>
         </div>
         <br>
         

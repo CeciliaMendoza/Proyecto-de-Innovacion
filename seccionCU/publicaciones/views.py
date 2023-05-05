@@ -150,26 +150,20 @@ def solicitar(request, publicacion_id):
 
 
 @login_required
-def historial(request):
+def historial_general(request, tipo):
     categorias = Categoria.objects.all()
     usuario = User.objects.get(id=request.user.id)
-    queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario)
-    # Show 10 
-    paginator = Paginator(queryset, 10) 
-    #obtiene el numeor de pagina 
-    page_number = request.GET.get('page')
-    queryset = paginator.get_page(page_number)       
-    return render(request, "publicaciones/historial_mis_solicitudes.html", {"solicitudes" : queryset, "categorias" : categorias})
+    if tipo == 1:
+        #solicitudes
+        queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario)
+    else:
+        #pedidos
+        queryset = Solicitudes.objects.select_related('publicacion').filter(publicacion__autor = usuario)
 
-
-@login_required
-def historial_pedidos(request):
-    categorias = Categoria.objects.all()
-    usuario = User.objects.get(id=request.user.id)
-    queryset = Solicitudes.objects.select_related('publicacion').filter(publicacion__autor = usuario)
+    #query
     # Show 10
     paginator = Paginator(queryset, 10) 
     #obtiene el numeor de pagina 
     page_number = request.GET.get('page')
     queryset = paginator.get_page(page_number)  
-    return render(request, "publicaciones/historial_pedidos.html", {"solicitudes" : queryset, "categorias" : categorias})
+    return render(request, "publicaciones/historial.html", {"solicitudes" : queryset, "categorias" : categorias})

@@ -13,6 +13,7 @@ margin: 4px;
 color: gold;
 transform: scale(1.3);
 }
+
 .s1:hover ~ a {
 color: gold;
 }
@@ -35,6 +36,14 @@ right: 50px;
 }
 
 
-.checked ~ a {
+a.checked{
     color: orange;
+}
+
+a{
+    color: #FF9494;
+}
+
+a:hover{
+    color: #FF9494;
 }
