@@ -155,10 +155,10 @@ def historial_general(request, tipo):
     usuario = User.objects.get(id=request.user.id)
     if tipo == 1:
         #solicitudes
-        queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario)
+        queryset = Solicitudes.objects.select_related('publicacion').filter(solicitante = usuario).order_by("-created")
     else:
         #pedidos
-        queryset = Solicitudes.objects.select_related('publicacion').filter(publicacion__autor = usuario)
+        queryset = Solicitudes.objects.select_related('publicacion').filter(publicacion__autor = usuario).order_by("-created")
 
     #query
     # Show 10
