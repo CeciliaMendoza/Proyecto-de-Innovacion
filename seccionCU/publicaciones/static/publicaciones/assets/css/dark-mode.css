@@ -91,12 +91,12 @@
 
 .dark-mode .titulos-historial a{
     text-decoration: none;
-    color: #C9D6DF;
+    color: #1E2022;
 }
 
 .dark-mode .titulos-historial .active{
     text-decoration: none;
-    color: #1E2022;
+    color: #C9D6DF;
     font-size: 2.5rem;
 }
 

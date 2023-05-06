@@ -43,11 +43,19 @@
             <span>Nombre Completo: </span>
             {{ usuario.first_name }} {{ usuario.last_name }}
         </h2>
+        {% if usuario.career %}
         <h2>
-            <span>Teléfono: </span>
-            {{ usuario.phone }}
+                <span>Carrera: </span>
+                {{ usuario.career }}
         </h2>
-    
+        {%endif%}    
+        {% if usuario.phone %}
+        <h2>
+
+                <span>Teléfono: </span>
+                {{ usuario.phone }}
+        </h2>
+        {%endif%}    
     </div>
 
     <div class="cont-opciones-perfil">

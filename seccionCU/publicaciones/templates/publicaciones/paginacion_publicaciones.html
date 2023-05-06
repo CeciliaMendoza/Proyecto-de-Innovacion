@@ -3,7 +3,7 @@
   
           {% if page_obj.has_previous %}
               <li class="page-item paginacion">
-                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
               </li>
           {% endif %}
   
@@ -23,7 +23,7 @@
   
           {% if page_obj.has_next %}
               <li class="page-item paginacion">
-                  <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
               </li>
           {% endif %}
   
