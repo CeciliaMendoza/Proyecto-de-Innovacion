@@ -48,7 +48,7 @@
     color: #C9D6DF;
 }
 
-.dark-mode h2{
+.dark-mode .cont-datosPerfil h2{
     color: #C9D6DF;
     border-bottom: 3.5px solid #C9D6DF;
 }
@@ -56,6 +56,20 @@
 .dark-mode .page-link{
     background-color: #C9D6DF;
     color: white;
+}
+
+.dark-mode a{
+    text-decoration: none;
+    color: #C9D6DF;
+}
+
+.dark-mode a:hover{
+    color: #C9D6DF;
+}
+
+.dark-mode .btn-solicitar{
+    background-color: #C9D6DF;
+    border: 1px solid #C9D6DF;
 }
 
 .dark-mode .page-item.active .page-link{
@@ -73,6 +87,17 @@
 
 .dark-mode .subnav:hover .subnavbtn {
   background-color: #1E2022;
+}
+
+.dark-mode .titulos-historial a{
+    text-decoration: none;
+    color: #C9D6DF;
+}
+
+.dark-mode .titulos-historial .active{
+    text-decoration: none;
+    color: #1E2022;
+    font-size: 2.5rem;
 }
 
 

@@ -16,6 +16,18 @@
     }
 </style>
 
+    <div class="mensaje-cat-bus">
+        {% if '/categoria/' in request.path %}
+            <h1>Categoria: {{cat}}</h1>
+        {% endif %}
+
+        {% if '/busqueda/' in request.path %}
+
+        <h1>Termino buscado: {{busqueda}}</h1>
+
+        {% endif %}
+    </div>
+
     <div class="publicaciones-2">
         
         {%for publicacion in publicaciones%}

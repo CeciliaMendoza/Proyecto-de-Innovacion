@@ -10,6 +10,10 @@
     background-position: center;
 }
 
+.vh-100-registro{
+    height: 100vh;
+}
+
 .div-login-mitad section{
     display: flex;
     flex-direction: column;
@@ -28,8 +32,8 @@
     margin: 0 2rem;
 }
 
-@media (max-width: 321px){
-    .div-login-mitad {
+@media (max-width: 320px){
+   .div-login-mitad {
         height: 100%;
         display: flex;
         justify-content: center;
@@ -67,7 +71,6 @@
 
     .div-login-mitad section{
         width: 16rem;
-        height: 22.5rem !important;
 
         border-radius: 1rem;
 
@@ -81,12 +84,10 @@
         margin-top: 1rem;
     }
 
-    .body-registro .div-login-mitad section{
-        height: 24rem !important;
-    }
 }
 
 @media (min-width:322px) and (max-width: 376px){
+
     .div-login-mitad {
         height: 100%;
         display: flex;
@@ -121,7 +122,6 @@
 
     .div-login-mitad section{
         width: 18rem;
-        height: 25rem !important;
 
         border-radius: 1rem;
 
@@ -134,6 +134,7 @@
     .section-login button{
         margin-top: 1rem;
     }
+
 }
 
 @media (min-width:377px) and (max-width: 415px){
@@ -171,7 +172,7 @@
 
     .div-login-mitad section{
         width: 20rem;
-        height: 30rem !important;
+        height: 32rem !important;
 
         border-radius: 1rem;
 
@@ -187,7 +188,7 @@
 
     .body-registro .div-login-mitad section{
         width: 24rem;
-        height: 34rem !important;
+        height: 36rem !important;
     }
 }
 
@@ -443,5 +444,11 @@
 
     .section-login button{
         margin-top: 1rem;
+    }
+}
+
+@media (min-width: 921px) and (max-width: 1024px){
+    .vh-100-registro{
+        height: 130vh;
     }
 }

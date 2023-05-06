@@ -42,7 +42,7 @@
 
 .img-publi{
     width: 100%;
-    height: 12rem;
+    height: 13rem;
     object-fit: cover;
 }
 
@@ -54,6 +54,12 @@
 
 .span-card{
     font-weight: bold;
+}
+
+.btn-solicitar{
+    background-color: #FF9494;
+    border: 1px solid #FF9494;
+    font-size: 1.5rem;
 }
 
 @media (max-width: 600px){

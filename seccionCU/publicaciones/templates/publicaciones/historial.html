@@ -4,25 +4,28 @@
 
 {%block content%}
 
+    <div class="titulos-historial">
+        <h2>
+            <a href="{%url 'historial' 1%}" class="titulo {% if '/historial/1' in request.path %} active {% endif %}"> Mis solicitudes</a>
+        </h2>
+        
+        <h2>
+            <a href="{%url 'historial' 2%}" class="titulo {% if '/historial/2' in request.path %} active {% endif %}"> Pedidos</a>
+        </h2>
+    </div>
 
-    <h2>
-        <a href="{%url 'historial' 1%}" class="titulo {% if '/historial/1' in request.path %} active {% endif %}"> Mis solicitudes</a>
-    </h2>
     
-    <h2>
-        <a href="{%url 'historial' 2%}" class="titulo {% if '/historial/2' in request.path %} active {% endif %}"> Pedidos</a>
-    </h2>
 
     
-    <div class="publicaciones-1">
+    <div class="publicaciones-2">
         
         {%for soli in solicitudes%}
-        <a href="{%url 'publicacion' soli.publicacion.id%}">
+        <a href="{%url 'publicacion' soli.publicacion.id%}" style="text-decoration: none;">
 
         <div class="card mb-4 sombreado">
             <div class="row g-0">
               
-                <div class="col-md-4">
+                <div class="col-md-perfil">
                     {% if soli.publicacion.imagen %}
                         <img class="img-publi" src="{{soli.publicacion.imagen.url}}" class="card-img-top">
                     {%else%}
@@ -31,13 +34,11 @@
                 </div>
               
 
-              <div class="col-md-8">
+              <div class="col-md-perfil2">
                 <div class="card-body">
-                    <h5 class="card-title"><span class="span-card">Titulo:</span> {{soli.publicacion.titulo}}</h5>
-                    <p class="card-subtitle mb-2 text-muted"><span>Descripcion:</span> {{soli.publicacion.descripcion }}</p>
+                    <h5 class="card-title"><span class="span-card"></span> {{soli.publicacion.titulo}}</h5>
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Precio:</span> ${{soli.publicacion.precio}}</p>
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Autor:</span> {{soli.publicacion.autor}}</p>
-                    <p class="card-subtitle mb-2 text-muted"><span class="span-card">Categoria:</span> {{soli.publicacion.categoria}}</p>
                     <p class="card-subtitle mb-2 text-muted"><span class="span-card">Fecha:</span> {{soli.created}}</p>
                 </div>
               </div>

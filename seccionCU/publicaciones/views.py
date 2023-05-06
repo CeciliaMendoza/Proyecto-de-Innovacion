@@ -40,7 +40,7 @@ def categoria(request, categoria_id):
     page_number = request.GET.get('page')
     publicaciones = paginator.get_page(page_number)
 
-    return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias})
+    return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias, "cat":categoria })
 
 @login_required
 def busquedas(request):
@@ -55,7 +55,7 @@ def busquedas(request):
         #obtiene el numeor de pagina 
         page_number = request.GET.get('page')
         publicaciones = paginator.get_page(page_number)
-    return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias})
+    return render(request, "publicaciones/home.html", {"publicaciones" : publicaciones, "categorias" : categorias, "busqueda":query})
 
 @method_decorator(login_required, name='dispatch')
 class crear_publicacion(View):

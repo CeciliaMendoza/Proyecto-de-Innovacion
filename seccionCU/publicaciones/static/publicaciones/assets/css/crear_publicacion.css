@@ -64,7 +64,7 @@
 
 @media (min-width: 0px){
 
-    .form-content input[type="text"],.form-content input[type="number"], .form-content input[type="file"], .form-content .select{
+    .form-content input, .form-content .select{
         width: 100%;
     }
 
@@ -116,7 +116,7 @@
     }
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) and (max-width: 1279px){
     .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 54rem;
     }
@@ -132,7 +132,7 @@
     }
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1280px) and (max-width: 1440px){
     .form-content input[type="text"], .form-content input[type="number"], .form-content input[type="file"], .form-content .select{
         width: 60rem;
     }

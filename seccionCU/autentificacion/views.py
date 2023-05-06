@@ -72,7 +72,7 @@ def configuracion(request):
         #si el formato es valido
         if form.is_valid() :
             form.save()
-            messages.success(request, 'Your profile is updated successfully')
+            messages.success(request, 'Tu Perfil ha sido Actualizado Correctamente')
             return redirect("perfil")
     else:
         form = Update_user(instance=usuario)
@@ -81,7 +81,7 @@ def configuracion(request):
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'autentificacion/change_password.html'
-    success_message = "Successfully Changed Your Password"
+    success_message = "Contraseña Actualizada Correctamente"
     success_url = reverse_lazy('perfil')
 
 @login_required

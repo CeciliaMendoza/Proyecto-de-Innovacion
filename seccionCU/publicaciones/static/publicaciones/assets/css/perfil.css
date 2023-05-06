@@ -5,6 +5,28 @@
     margin: 2rem;
 }
 
+.mensaje-cat-bus h1{
+    text-align: center;
+    color: #FF9494;
+}
+
+@media (max-width: 320px){
+    .mensaje-cat-bus h1{
+        font-size: 1.8rem;
+    }
+}
+
+@media(min-width: 321px) and (max-width: 375px){
+    .mensaje-cat-bus h1{
+        font-size: 2.2rem;
+    }
+}
+
+
+.alert-success li{
+    list-style: none;
+}
+
 .col-md-perfil{
     position: relative;
     width: 100%;

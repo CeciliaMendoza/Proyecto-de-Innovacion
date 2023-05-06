@@ -1,0 +1,57 @@
+.titulos-historial{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.titulos-historial a{
+    text-decoration: none;
+    color: #FFD1D1;
+}
+
+.titulos-historial .active{
+    text-decoration: none;
+    color: #FF9494;
+    font-size: 2.5rem;
+}
+
+#imagen_publicacion{
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.publicaciones-1 a{
+    text-decoration: none;
+}
+
+@media (max-width: 320px){
+    .titulos-historial .active{
+        font-size: 1.5rem;
+    }
+
+    .titulos-historial a{
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px){
+    .titulos-historial .active{
+        font-size: 1.5rem;
+    }
+
+    .titulos-historial a{
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 414px){
+    .titulos-historial .active{
+        font-size: 1.8rem;
+    }
+
+    .titulos-historial a{
+        font-size: 1.2rem;
+    }
+}

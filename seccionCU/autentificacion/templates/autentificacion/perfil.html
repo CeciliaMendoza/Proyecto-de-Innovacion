@@ -16,7 +16,7 @@
 </style>
 
 {% if messages %}
-<ul class="messages">
+<ul id="msg" class="messages alert alert-success">
     {% for message in messages %}
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}

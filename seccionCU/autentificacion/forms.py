@@ -19,13 +19,12 @@ class CustomUserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username','first_name','last_name', 'career', 'email')
+        fields = ('username','first_name','last_name', 'email')
 
         labels = {
             'username': _('Nombre de usuario'),
             'first_name': _('Nombre'),
             'last_name': _('Apellido'),
-            'career': _('Carrera'),
             'email' : _("Correo electronico"),
         }
 
