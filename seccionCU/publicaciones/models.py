@@ -1,6 +1,20 @@
 from django.db import models
 from autentificacion.models import User
 from django.db.models import Avg
+from django.db.models import DecimalField
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+def validate_positive(value):
+    if value < 0:
+        raise ValidationError(
+            "Ingrese un valor positivo"
+        )
+
+class PositiveDecimalField(DecimalField):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.validators.append(validate_positive)
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
@@ -20,7 +34,7 @@ class Publicaciones(models.Model):
     imagen =  models.ImageField(upload_to='publicaciones', null=True, blank=True)
     estado = models.BooleanField(default=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = PositiveDecimalField(max_digits=10, decimal_places=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
@@ -28,7 +42,6 @@ class Publicaciones(models.Model):
     class Meta:
         verbose_name='publicacion'
         verbose_name_plural = 'publicaciones'
-
     def __str__(self):
         return self.titulo
     @property
